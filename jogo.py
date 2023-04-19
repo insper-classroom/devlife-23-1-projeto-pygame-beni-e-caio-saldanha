@@ -1,5 +1,4 @@
 from funcoes import *
 
-self = Tela_do_jogo
-inicializa(self)
-loop_jogo(self)
+jogo = Tela_do_jogo()
+jogo.loop_jogo()
