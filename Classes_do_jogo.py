@@ -41,7 +41,6 @@ class Jogo:
         pygame.display.update()
     
     def loop_jogo(self):
-        self.atualiza_estado()
         while self.atualiza_estado():
             self.desenha()
 
