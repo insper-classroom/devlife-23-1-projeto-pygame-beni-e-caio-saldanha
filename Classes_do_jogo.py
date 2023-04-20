@@ -11,8 +11,8 @@ class Jogo:
         pygame.display.set_caption('Jogo do Caião e do Benizão')
         imagem_nave = pygame.image.load('nave do joguinho.png')
         imagem_nave_redimensionada = pygame.transform.scale(imagem_nave, (100,100))
-        self.nave = Nave(self.window, [380, 670], imagem_nave_redimensionada, 0, self.delta_t)
-        self.nave2 = Nave(self.window, [1140, 670], imagem_nave_redimensionada, 0, self.delta_t)
+        self.nave = Nave(self.window, [380, 670], imagem_nave_redimensionada, 0, self.delta_t,1)
+        self.nave2 = Nave(self.window, [1140, 670], imagem_nave_redimensionada, 0, self.delta_t,2)
 
 
     def calcula_deltaT(self):
@@ -28,7 +28,7 @@ class Jogo:
             if evento.type == pygame.QUIT:
                 jogo = False
             self.nave.movimenta_nave(evento)
-            self.nave2.movimenta_nave2(evento)
+            self.nave2.movimenta_nave(evento)
 
         return jogo
         
