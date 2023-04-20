@@ -9,8 +9,6 @@ class Nave:
         self.delta_t = delta_t
         self.window = window
         self.n_nave = n_nave
-        imagem = pygame.image.load('nave do joguinho.png')
-        imagem_redimensionada = pygame.transform.scale(imagem, (100,100))
         self.imagem_redimensionada = imagem_redimensionada
 
     def desenha_nave(self):
