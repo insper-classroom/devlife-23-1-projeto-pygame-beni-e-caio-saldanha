@@ -1,6 +1,7 @@
 import pygame
 from Classe_da_nave import Nave
 from Classe_do_inimigo import Inimigo
+
 class Jogo:
     def __init__(self):
         pygame.init()
@@ -31,10 +32,12 @@ class Jogo:
         
         jogo = True
         for evento in pygame.event.get():
-            if evento.type == pygame.QUIT:
-                jogo = False
-            self.nave.movimenta_nave(evento)
-            self.nave2.movimenta_nave(evento)
+            if evento.type != pygame.MOUSEMOTION:
+                if evento.type == pygame.QUIT:
+                    jogo = False
+                elif evento.type == pygame.KEYDOWN or pygame.KEYUP:
+                    self.nave.movimenta_nave(evento)
+                    self.nave2.movimenta_nave(evento)
 
         return jogo
         
