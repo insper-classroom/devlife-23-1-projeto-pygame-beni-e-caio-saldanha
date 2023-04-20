@@ -22,7 +22,7 @@ class Jogo:
         return delta_t
 
     def atualiza_estado(self):
-        #Caso o jogador clique no "quit" o jogo fecha:
+        
         jogo = True
         for evento in pygame.event.get():
             if evento.type == pygame.QUIT:
@@ -33,7 +33,7 @@ class Jogo:
         return jogo
         
     def desenha(self):
-        #Desenha as telas de fundo:
+
         self.window.fill((0, 0, 0))
         self.nave.desenha_nave()
         self.nave2.desenha_nave()
