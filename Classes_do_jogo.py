@@ -28,7 +28,7 @@ class Jogo:
             if evento.type == pygame.QUIT:
                 jogo = False
             self.nave.movimenta_nave(evento)
-        # self.nave2.movimenta_nave()
+            self.nave2.movimenta_nave2(evento)
 
         return jogo
         
