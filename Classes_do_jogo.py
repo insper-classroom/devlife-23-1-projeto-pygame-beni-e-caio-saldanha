@@ -15,7 +15,7 @@ class Jogo:
         self.imagem_fundo = pygame.image.load('Imagens\Space Background.png')
         self.nave = Nave(self.window, [380, 670], imagem_nave_redimensionada, 0, self.delta_t,1)
         self.nave2 = Nave(self.window, [1140, 670], imagem_nave_redimensionada, 0, self.delta_t,2)
-
+        #vaaaaaaaaaaaamos
 
     def calcula_deltaT(self):
         tempo_atual = pygame.time.get_ticks()
