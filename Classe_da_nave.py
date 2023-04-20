@@ -18,29 +18,33 @@ class Nave:
 
 
     def movimenta_nave(self, evento):
+
+        v = 30
         
         if self.n_nave == 1:
             if evento.type == pygame.KEYDOWN:
                 if evento.key == pygame.K_d:
-                    self.vel_nave += 30
+                    self.vel_nave += v
                 elif evento.key == pygame.K_a:
-                    self.vel_nave -= 30
+                    self.vel_nave -= v
             elif evento.type == pygame.KEYUP:
                 if evento.key == pygame.K_d:
-                    self.vel_nave -= 30
+                    self.vel_nave -= v
                 elif evento.key == pygame.K_a:
-                    self.vel_nave += 30
+                    self.vel_nave += v
 
+            self.posicao_nave[0] += self.vel_nave * self.delta_t
+        
         else:        
             if evento.type == pygame.KEYDOWN:
                 if evento.key == pygame.K_l:
-                    self.vel_nave += 30
+                    self.vel_nave += v
                 elif evento.key == pygame.K_j:
-                    self.vel_nave -= 30
+                    self.vel_nave -= v
             elif evento.type == pygame.KEYUP:
                 if evento.key == pygame.K_l:
-                    self.vel_nave -= 30
+                    self.vel_nave -= v
                 elif evento.key == pygame.K_j:
-                    self.vel_nave += 30
+                    self.vel_nave += v
 
-        self.posicao_nave[0] += self.vel_nave * self.delta_t
+            self.posicao_nave[0] += self.vel_nave * self.delta_t
