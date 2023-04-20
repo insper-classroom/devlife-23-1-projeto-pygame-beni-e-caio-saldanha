@@ -33,14 +33,14 @@ class Nave:
 
         else:        
             if evento.type == pygame.KEYDOWN:
-                if evento.key == pygame.K_RIGHT:
+                if evento.key == pygame.K_l:
                     self.vel_nave += 30
-                elif evento.key == pygame.K_LEFT:
+                elif evento.key == pygame.K_j:
                     self.vel_nave -= 30
             elif evento.type == pygame.KEYUP:
-                if evento.key == pygame.K_RIGHT:
+                if evento.key == pygame.K_l:
                     self.vel_nave -= 30
-                elif evento.key == pygame.K_LEFT:
+                elif evento.key == pygame.K_j:
                     self.vel_nave += 30
 
         self.posicao_nave[0] += self.vel_nave * self.delta_t
