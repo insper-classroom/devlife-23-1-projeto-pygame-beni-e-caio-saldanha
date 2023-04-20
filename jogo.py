@@ -1,4 +1,4 @@
 from funcoes import *
 
-jogo = Tela_do_jogo()
+jogo = Jogo()
 jogo.loop_jogo()
