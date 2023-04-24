@@ -1,13 +1,10 @@
 import pygame
 
-class Inimigo:
+class Inimigo(pygame.sprite.Sprite):
 
-    def __init__(self, window, pos, n_inimigos, imagem_redimensionada):
-        self.window = window
-        self.pos = pos
-        self.n_inimigos = n_inimigos
-        self.imagem = imagem_redimensionada
-
-    def desenha_inimigo (self):
-        vida = self.imagem
-        self.window.blit(vida, self.pos)
+    def __init__(self, posicao_inimigo, imagem_redimensionada):
+        super().__init__()
+        self.image = imagem_redimensionada
+        self.rect = self.image.get_rect()
+        self.rect.x = posicao_inimigo[0]
+        self.rect.y = posicao_inimigo[1]
