@@ -23,8 +23,8 @@ class Nave:
 
             if self.posicao_nave[0] < 0:
                 self.posicao_nave[0] = 0
-            elif self.posicao_nave[0] > 670:
-                self.posicao_nave[0] = 670
+            elif self.posicao_nave[0] > 1420:
+                self.posicao_nave[0] = 1420
 
             if evento.type == pygame.KEYDOWN:
                 if evento.key == pygame.K_d:
@@ -41,8 +41,8 @@ class Nave:
         
         else: 
 
-            if self.posicao_nave[0] < 760:
-                self.posicao_nave[0] = 760
+            if self.posicao_nave[0] < 0:
+                self.posicao_nave[0] = 0
             elif self.posicao_nave[0] > 1420:
                 self.posicao_nave[0] = 1420
 
