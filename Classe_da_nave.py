@@ -20,6 +20,12 @@ class Nave:
         v = 30
         
         if self.n_nave == 1:
+
+            if self.posicao_nave[0] < 0:
+                self.posicao_nave[0] = 0
+            elif self.posicao_nave[0] > 670:
+                self.posicao_nave[0] = 670
+
             if evento.type == pygame.KEYDOWN:
                 if evento.key == pygame.K_d:
                     self.vel_nave += v
@@ -33,7 +39,13 @@ class Nave:
 
             self.posicao_nave[0] += self.vel_nave * self.delta_t
         
-        else:        
+        else: 
+
+            if self.posicao_nave[0] < 760:
+                self.posicao_nave[0] = 760
+            elif self.posicao_nave[0] > 1420:
+                self.posicao_nave[0] = 1420
+
             if evento.type == pygame.KEYDOWN:
                 if evento.key == pygame.K_l:
                     self.vel_nave += v
@@ -44,5 +56,6 @@ class Nave:
                     self.vel_nave -= v
                 elif evento.key == pygame.K_j:
                     self.vel_nave += v
+
 
             self.posicao_nave[0] += self.vel_nave * self.delta_t
