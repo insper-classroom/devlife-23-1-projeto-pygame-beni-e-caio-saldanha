@@ -30,38 +30,20 @@ class Jogo:
         self.nave = Nave(self.window, [380, 610], imagem_nave_redimensionada, 0, self.delta_t,1)
         self.nave2 = Nave(self.window, [1140, 610], imagem_nave_redimensionada, 0, self.delta_t,2)
 
-        # self.inimigo_p1 = pygame.sprite.Group()
-        # x = 0
-        # y = 0
         largura_inimigo = imagem_inimigo_redimensionada.get_width()
         altura_inimigo = imagem_inimigo_redimensionada.get_height()
-        # contagem_inimigo_linha = 0
-        # for i in range (18):
-        #     contagem_inimigo_linha += 1
-        #     self.inimigo = Inimigo([x,y], imagem_inimigo_redimensionada)
-        #     self.inimigo_p1.add(self.inimigo)
-        #     if contagem_inimigo_linha > 6:
-        #         x = 0
-        #         y += altura_inimigo
-        #         contagem_inimigo_linha = 0
-        #     else:
-        #         x += largura_inimigo
-        # x = 0
 
-        self.inimigo_p2 = pygame.sprite.Group()
+        self.sprites_inimigo = pygame.sprite.Group()
         x = 0
         y = 0
 
         for i_y in range (3):
             for i in range (20):
                 self.inimigo = Inimigo([x,y], imagem_inimigo_redimensionada)
-                self.inimigo_p2.add(self.inimigo)
+                self.sprites_inimigo.add(self.inimigo)
                 x += largura_inimigo
             y += altura_inimigo
             x = 0
-        self.todos_inimigos = pygame.sprite.Group()
-        self.todos_inimigos.add( self.inimigo_p2)
-
 
     def calcula_deltaT(self):
         tempo_atual = pygame.time.get_ticks()
@@ -88,7 +70,7 @@ class Jogo:
         self.window.blit(self.imagem_fundo_redimensionada, (0,0))
         self.nave.desenha_nave()
         self.nave2.desenha_nave()
-        self.todos_inimigos.draw(self.window)
+        self.sprites_inimigo.draw(self.window)
         
 
         pygame.display.update()
