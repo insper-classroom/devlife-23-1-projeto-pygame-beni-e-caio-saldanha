@@ -16,7 +16,7 @@ class Jogo:
         imagem_nave = pygame.image.load('nave do joguinho.png')
         imagem_nave_redimensionada = pygame.transform.scale(imagem_nave, (100,100))
         imagem_fundo = pygame.image.load('Imagens\Space Background.png')
-        self.imagem_fundo_redimensionada = pygame.transform.scale_by(imagem_fundo, (1, 0.93))
+        self.imagem_fundo_redimensionada = pygame.transform.scale(imagem_fundo, (1520, 700))
         imagem_inimigo = pygame.image.load('Imagens\Klaed - Fighter - Base.png')
         imagem_inimigo_redimensionada = pygame.transform.scale(imagem_inimigo, (60,60))
         largura_inimigo = imagem_inimigo_redimensionada.get_width()
