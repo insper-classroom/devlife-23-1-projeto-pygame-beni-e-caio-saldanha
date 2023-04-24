@@ -36,8 +36,8 @@ class Jogo:
         x = 0
         y = 0
 
-        for i_y in range (3):
-            for i in range (20):
+        for _ in range (3):
+            for _ in range (20):
                 self.inimigo = Inimigo([x,y], imagem_inimigo_redimensionada)
                 self.sprites_inimigo.add(self.inimigo)
                 x += largura_inimigo
