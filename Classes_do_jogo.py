@@ -14,11 +14,11 @@ class Jogo:
 
         # IMAGENS
         imagem_nave = pygame.image.load('nave do joguinho.png')
-        imagem_nave_redimensionada = pygame.transform.scale(imagem_nave, (100,100))
+        imagem_nave_redimensionada = pygame.transform.scale(imagem_nave, (80,80))
         imagem_fundo = pygame.image.load('Imagens\Space Background.png')
         self.imagem_fundo_redimensionada = pygame.transform.scale(imagem_fundo, (1520, 700))
         imagem_inimigo = pygame.image.load('Imagens\Klaed - Fighter - Base.png')
-        imagem_inimigo_redimensionada = pygame.transform.scale(imagem_inimigo, (60,60))
+        imagem_inimigo_redimensionada = pygame.transform.scale(imagem_inimigo, (50,50))
         largura_inimigo = imagem_inimigo_redimensionada.get_width()
 
         # 
@@ -31,9 +31,10 @@ class Jogo:
 
         largura_inimigo = imagem_inimigo_redimensionada.get_width()
         altura_inimigo = imagem_inimigo_redimensionada.get_height()
+        print(largura_inimigo)
 
         self.sprites_inimigo = pygame.sprite.Group()
-        x = 150
+        x = 260
         y = 0
 
         for _ in range (3):
@@ -42,7 +43,7 @@ class Jogo:
                 self.sprites_inimigo.add(self.inimigo)
                 x += largura_inimigo
             y += altura_inimigo
-            x = 150
+            x = 260
 
     def calcula_deltaT(self):
         tempo_atual = pygame.time.get_ticks()

@@ -9,8 +9,8 @@ class Inimigo(pygame.sprite.Sprite):
         self.rect.x = posicao_inimigo[0]
         self.rect.y = posicao_inimigo[1]
         self.delta_t = delta_t
-        self.max_x = posicao_inimigo[0] + 150
-        self.min_x = posicao_inimigo[0] - 150
+        self.max_x = posicao_inimigo[0] + 260
+        self.min_x = posicao_inimigo[0] - 260
         self.velocidade = 10
 
 
