@@ -5,7 +5,7 @@ from Classe_do_inimigo import Inimigo
 class Jogo:
     def __init__(self):
         pygame.init()
-
+        clock = pygame.time.Clock()
         # TELA E WINDOW
         self.largura = 1520
         self.altura = 760
@@ -13,7 +13,7 @@ class Jogo:
         pygame.display.set_caption('Jogo do Caião e do Benizão')
 
         # IMAGENS
-        imagem_nave = pygame.image.load('nave do joguinho.png')
+        imagem_nave = pygame.image.load('Imagens\pixil-frame-0.png')
         imagem_nave_redimensionada = pygame.transform.scale(imagem_nave, (80,80))
         imagem_fundo = pygame.image.load('Imagens\Space Background.png')
         self.imagem_fundo_redimensionada = pygame.transform.scale(imagem_fundo, (1520, 700))
@@ -49,10 +49,13 @@ class Jogo:
         tempo_atual = pygame.time.get_ticks()
         delta_t = (tempo_atual - self.ultimo_updated) / 1000
         self.ultimo_updated = tempo_atual
+
         return delta_t
 
     def atualiza_estado(self):
         
+        clock = pygame.time.Clock()
+        clock.tick(120)
         jogo = True
         for evento in pygame.event.get():
             if evento.type != pygame.MOUSEMOTION:
