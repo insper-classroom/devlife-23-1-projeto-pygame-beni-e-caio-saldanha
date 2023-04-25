@@ -1,4 +1,4 @@
-from Classes_do_jogo import *
+from Classe_controla_telas import *
 
-jogo = Jogo()
-jogo.loop_jogo()
+jogo = ControlaTelas()
+jogo.game_loop()
