@@ -54,7 +54,7 @@ class Jogo:
     def atualiza_estado(self):
         
         clock = pygame.time.Clock()
-        clock.tick(120)
+        clock.tick(60)
         jogo = True
         for evento in pygame.event.get():
             if evento.type != pygame.MOUSEMOTION:

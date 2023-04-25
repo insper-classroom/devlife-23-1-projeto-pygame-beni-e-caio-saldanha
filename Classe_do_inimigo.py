@@ -16,7 +16,12 @@ class Inimigo(pygame.sprite.Sprite):
 
     def update(self):
 
-        if self.rect.x < self.min_x or self.rect.x > self.max_x:
-            self.velocidade *= -1
+        if self.rect.x < self.min_x: 
+            self.velocidade = abs(self.velocidade)
             self.rect.y += self.image.get_height()
+            self.rect.x = self.min_x
+        if self.rect.x > self.max_x:
+            self.velocidade = -abs(self.velocidade)
+            self.rect.y += self.image.get_height()
+            self.rect.x = self.max_x
         self.rect.x += self.delta_t * self.velocidade
