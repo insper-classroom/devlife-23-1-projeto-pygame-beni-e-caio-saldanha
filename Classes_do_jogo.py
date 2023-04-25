@@ -31,7 +31,6 @@ class Jogo:
 
         largura_inimigo = imagem_inimigo_redimensionada.get_width()
         altura_inimigo = imagem_inimigo_redimensionada.get_height()
-        print(largura_inimigo)
 
         self.sprites_inimigo = pygame.sprite.Group()
         x = 260
