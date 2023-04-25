@@ -9,12 +9,14 @@ class Inimigo(pygame.sprite.Sprite):
         self.rect.x = posicao_inimigo[0]
         self.rect.y = posicao_inimigo[1]
         self.delta_t = delta_t
+        self.max_x = posicao_inimigo[0] + 150
+        self.min_x = posicao_inimigo[0] - 150
+        self.velocidade = 10
+
 
     def update(self):
-        velocidade = 10
-        if self.rect.x < 1520:
-            self.rect.x += self.delta_t * velocidade
-        elif self.rect.x > 1520:
-            self.rect.x -= self.delta_t * velocidade
-        elif self.rect.x < 0:
-            self.rect.x += self.delta_t * velocidade
+
+        if self.rect.x < self.min_x or self.rect.x > self.max_x:
+            self.velocidade *= -1
+            self.rect.y += self.image.get_height()
+        self.rect.x += self.delta_t * self.velocidade
