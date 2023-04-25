@@ -1,14 +1,12 @@
 import pygame
 
 class Inicio:
-    def __init__(self, window, mensagem):
+    def __init__(self, window):
         self.window = window
-        self.mensagem = mensagem
 
     def desenha_tela(self):
-            self.mensagem = 'Clique espaço para jogar'
-
-            self.window.blit(''' 
+        self.window.fill((255, 255, 255))
+        self.window.blit(''' 
         _______  _______  _        _______  _______ __________________ _______             _______  _______  _______  _______  _______  _______ 
         (  ____ \(  ___  )( \      (  ___  )(  ____ |\__   __/\__   __/(  ____ \  |\     /|(  ___  )(  ____ )(  ____ \(  ___  )(  ____ )(  ____|
         | (    \/| (   ) || (      | (   ) || (    \/   ) (      ) (   | (    \/  | )   ( || (   ) || (    )|| (    \/| (   ) || (    )|| (    
@@ -19,7 +17,9 @@ class Inicio:
         (_______)|/     \|(_______/|/     \|(_______/   )_(   \_______/(_______/  (_______)|/     \||/   \__/|/       |/     \||/   \__/(_______/
         ''', (780,300))
             
-            self.window.blit(self.mensagem, (780,500))
+        self.window.blit('Clique espaço para jogar', (780,500))
+        self.window.blit('Clique I para ler as instruções', (780,600))
+
 
 
 
