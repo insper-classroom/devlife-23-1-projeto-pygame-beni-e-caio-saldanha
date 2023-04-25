@@ -4,7 +4,7 @@ class Instrucao:
 
     def desenha_tela(self):
         self.window.fill((255, 255, 255))
-        self.window.blit('* Como Jogar:', (780,200))
+        self.window.blit('Como Jogar:', (780,200))
         self.window.blit('* O objetivo do jogo é destruir as naves inimigas.', (720,300))
         self.window.blit('* O jogo é multiplayer', (720,350))
         self.window.blit('* Existem 4 tipos de naves inimigas', (720,400))
