@@ -33,16 +33,16 @@ class Jogo:
         altura_inimigo = imagem_inimigo_redimensionada.get_height()
 
         self.sprites_inimigo = pygame.sprite.Group()
-        x = 0
+        x = 150
         y = 0
 
         for _ in range (3):
             for _ in range (20):
-                self.inimigo = Inimigo([x,y], imagem_inimigo_redimensionada)
+                self.inimigo = Inimigo([x,y], imagem_inimigo_redimensionada, self.delta_t)
                 self.sprites_inimigo.add(self.inimigo)
                 x += largura_inimigo
             y += altura_inimigo
-            x = 0
+            x = 150
 
     def calcula_deltaT(self):
         tempo_atual = pygame.time.get_ticks()
@@ -60,6 +60,7 @@ class Jogo:
                 elif evento.type == pygame.KEYDOWN or pygame.KEYUP:
                     self.nave.movimenta_nave(evento)
                     self.nave2.movimenta_nave(evento)
+        self.sprites_inimigo.update()
 
         return jogo
         
