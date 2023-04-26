@@ -62,6 +62,6 @@ class TelaInstrucao:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return -1
-            elif event.type == pygame.KEYDOWN and event.key == pygame.K_i:
+            elif event.type == pygame.KEYDOWN and event.key == pygame.K_v:
                 return 0
         return 2
