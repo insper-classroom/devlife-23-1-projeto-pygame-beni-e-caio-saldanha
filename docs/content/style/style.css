@@ -1,13 +1,17 @@
 style.css
 body {
     font-family: Arial, sans-serif;
+    
     margin: 0;
     padding: 0;
+    background-image: url("content/img/SpaceBackground.png");
+    width: auto;
+    height: auto;
   }
   
   header {
     background-color: #333;
-    color: #fff;
+    color: #ffffff;
     padding: 20px;
   }
   
@@ -42,6 +46,9 @@ body {
   }
   
   a:hover {
-    background-color: #666;
+    background-color: #ffffff;
   }
   
+  body{
+    color: #ffffff;
+  }
