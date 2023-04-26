@@ -16,20 +16,20 @@ class TelaInicio:
         fonte_titulo = pygame.font.Font('Imagens\Sigmar-Regular.ttf', 120)
         fonte_titulo_desenha = fonte_titulo.render('GALACTIC WARFARE', fonte_titulo, cor)
         self.widht_texto_titulo = fonte_titulo_desenha.get_width()
-        self.window.blit(fonte_titulo_desenha, ((self.width_window//2)-(self.widht_texto_titulo//2),150))
+        self.window.blit(fonte_titulo_desenha, ((self.width_window//2)-(self.widht_texto_titulo//2),180))
 
-        fonte_texto = pygame.font.Font('Imagens\Rubik-Italic-VariableFont_wght.ttf', 50)
-        fonte_espaco_desenha = fonte_texto.render('Clique espaço para jogar', fonte_texto, cor)
+        fonte_texto = pygame.font.Font('Imagens\Rubik-Italic-VariableFont_wght.ttf', 30)
+        fonte_espaco_desenha = fonte_texto.render('Clique (espaço) para jogar', fonte_texto, cor)
         self.widht_texto_espaco = fonte_espaco_desenha.get_width()
-        self.window.blit(fonte_espaco_desenha, ((self.width_window//2)-(self.widht_texto_espaco//2),650))
+        self.window.blit(fonte_espaco_desenha, ((self.width_window//2)-(self.widht_texto_espaco//2),550))
 
-        fonte_instrucoes_desenha = fonte_texto.render('Clique i para ler as instruções', fonte_texto, cor)
+        fonte_instrucoes_desenha = fonte_texto.render('Clique (i) para ler as instruções', fonte_texto, cor)
         self.widht_texto_instrucoes = fonte_instrucoes_desenha.get_width()
         self.window.blit(fonte_instrucoes_desenha, ((self.width_window//2)-(self.widht_texto_instrucoes//2),450))
 
         fonte_OU_desenha = fonte_texto.render('OU', fonte_texto, cor)
         self.widht_texto_OU = fonte_OU_desenha.get_width()
-        self.window.blit(fonte_OU_desenha, ((self.width_window//2)-(self.widht_texto_OU//2),550))
+        self.window.blit(fonte_OU_desenha, ((self.width_window//2)-(self.widht_texto_OU//2),500))
 
         
 
