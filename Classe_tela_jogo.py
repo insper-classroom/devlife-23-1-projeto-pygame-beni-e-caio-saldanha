@@ -32,7 +32,7 @@ class TelaJogo:
 
         self.sprites_inimigo = pygame.sprite.Group()
         x = 260
-        y = 0
+        y = 65
 
         for _ in range (3):
             for _ in range (20):
@@ -41,6 +41,8 @@ class TelaJogo:
                 x += largura_inimigo
             y += altura_inimigo
             x = 260
+
+        self.sprites_tiro = pygame.sprite.Group()
 
 
     def calcula_deltaT(self):
@@ -62,6 +64,7 @@ class TelaJogo:
                     self.nave.movimenta_nave(evento)
                     self.nave2.movimenta_nave(evento)
         self.sprites_inimigo.update()
+        self.sprites_tiro.update()
 
     
         for event in pygame.event.get():
@@ -79,8 +82,8 @@ class TelaJogo:
         self.nave2.desenha_nave()
         self.sprites_inimigo.draw(self.window)
         fonte = pygame.font.Font('Imagens\Rubik-Italic-VariableFont_wght.ttf', 24)
-        pontuacao_p1 = fonte.render('pontuação:', True, (0,0,255))
-        vidas_p1 = fonte.render('vidas:', True, (0,0,255))
+        pontuacao_p1 = fonte.render('pontuação:', True, (115,215,255))
+        vidas_p1 = fonte.render('vidas:', True, (115,215,255))
         pontuacao_p2 = fonte.render('pontuação:', True, (255,0,0))
         vidas_p2 = fonte.render('vidas:', True, (255,0,0))
         pontuacao_p1 = self.window.blit(pontuacao_p1, (10, 30))
