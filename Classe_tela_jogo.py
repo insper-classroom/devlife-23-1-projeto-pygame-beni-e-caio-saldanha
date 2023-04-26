@@ -1,6 +1,7 @@
 import pygame
 from Classe_da_nave import Nave
 from Classe_do_inimigo import Inimigo
+from Classe_tiro_personagem import TiroPersonagem
 
 class TelaJogo:
     def __init__(self, window):
@@ -24,7 +25,8 @@ class TelaJogo:
         self.ultimo_updated = -1
         self.delta_t = self.calcula_deltaT()
         # 
-        self.nave = Nave(self.window, [380, 670], imagem_nave_redimensionada1, 0, self.delta_t,1)
+        self.nave_pos = [380, 670]
+        self.nave = Nave(self.window, self.nave_pos, imagem_nave_redimensionada1, 0, self.delta_t,1)
         self.nave2 = Nave(self.window, [1140, 670], imagem_nave_redimensionada2, 0, self.delta_t,2)
 
         largura_inimigo = imagem_inimigo_redimensionada.get_width()
@@ -43,7 +45,8 @@ class TelaJogo:
             x = 260
 
         self.sprites_tiro = pygame.sprite.Group()
-
+        self.tiro = TiroPersonagem((self.nave_pos[0], self.nave_pos[1]), imagem_inimigo_redimensionada, self.delta_t)
+           
 
     def calcula_deltaT(self):
         tempo_atual = pygame.time.get_ticks()
@@ -63,6 +66,10 @@ class TelaJogo:
                 elif evento.type == pygame.KEYDOWN or pygame.KEYUP:
                     self.nave.movimenta_nave(evento)
                     self.nave2.movimenta_nave(evento)
+            if evento.type == pygame.KEYDOWN and evento.key == pygame.K_SPACE:
+                self.sprites_tiro.add(self.tiro)
+                print('n')
+
         self.sprites_inimigo.update()
         self.sprites_tiro.update()
 
