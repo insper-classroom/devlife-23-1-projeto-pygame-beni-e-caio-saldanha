@@ -18,12 +18,10 @@ class TelaInstrucao:
         # self.window.blit('Clique espaço para jogar', (780,650))
 
     def atualiza_estado(self):
-        indice_tela = 2
+        2
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                indice_tela = -1
-                return indice_tela
+                return -1
             elif event.type == pygame.KEYDOWN and event.key == pygame.K_i:
-                indice_tela = 0
-                return indice_tela
+                return 0
         return 2

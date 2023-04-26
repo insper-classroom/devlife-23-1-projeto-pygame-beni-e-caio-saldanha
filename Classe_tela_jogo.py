@@ -16,8 +16,7 @@ class TelaJogo:
         imagem_nave_redimensionada1 = pygame.transform.scale(imagem_nave_p1, (95,95))
         imagem_nave_p2 = pygame.image.load('Imagens\Imagem_p2.png')
         imagem_nave_redimensionada2 = pygame.transform.scale(imagem_nave_p2, (95,95))
-        imagem_fundo = pygame.image.load('Imagens\Space Background.png')
-        self.imagem_fundo_redimensionada = pygame.transform.scale(imagem_fundo, (1520, 700))
+        self.imagem_fundo = pygame.image.load('Imagens\Space Background.png')
         imagem_inimigo = pygame.image.load('Imagens\Imagem_inimigo1.png')
         imagem_inimigo_redimensionada = pygame.transform.scale(imagem_inimigo, (50,50))
         largura_inimigo = imagem_inimigo_redimensionada.get_width()
@@ -25,8 +24,8 @@ class TelaJogo:
         self.ultimo_updated = -1
         self.delta_t = self.calcula_deltaT()
         # 
-        self.nave = Nave(self.window, [380, 610], imagem_nave_redimensionada1, 0, self.delta_t,1)
-        self.nave2 = Nave(self.window, [1140, 610], imagem_nave_redimensionada2, 0, self.delta_t,2)
+        self.nave = Nave(self.window, [380, 670], imagem_nave_redimensionada1, 0, self.delta_t,1)
+        self.nave2 = Nave(self.window, [1140, 670], imagem_nave_redimensionada2, 0, self.delta_t,2)
 
         largura_inimigo = imagem_inimigo_redimensionada.get_width()
         altura_inimigo = imagem_inimigo_redimensionada.get_height()
@@ -75,10 +74,20 @@ class TelaJogo:
     def desenha_tela(self):
         
         self.window.fill((255, 255, 255))
-        self.window.blit(self.imagem_fundo_redimensionada, (0,0))
+        self.window.blit(self.imagem_fundo, (0,0))
         self.nave.desenha_nave()
         self.nave2.desenha_nave()
         self.sprites_inimigo.draw(self.window)
+        fonte = pygame.font.Font('Imagens\Rubik-Italic-VariableFont_wght.ttf', 24)
+        pontuacao_p1 = fonte.render('pontuação:', True, (0,0,255))
+        vidas_p1 = fonte.render('vidas:', True, (0,0,255))
+        pontuacao_p2 = fonte.render('pontuação:', True, (255,0,0))
+        vidas_p2 = fonte.render('vidas:', True, (255,0,0))
+        pontuacao_p1 = self.window.blit(pontuacao_p1, (10, 30))
+        vida_p1 = self.window.blit(vidas_p1, (10, 5))
+        self.window.blit(pontuacao_p2, (1300, 30))
+        self.window.blit(vidas_p2, (1300, 5))
+
 
         pygame.display.update()
     
