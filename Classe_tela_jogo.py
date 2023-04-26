@@ -1,6 +1,7 @@
 import pygame
 from Classe_da_nave import Nave
 from Classe_do_inimigo import Inimigo
+from Classe_cria_barreiras import Barreiras
 
 class TelaJogo:
     def __init__(self, window):
@@ -87,9 +88,13 @@ class TelaJogo:
         pontuacao_p2 = fonte.render('score:', True, (255,0,0))
         vidas_p2 = fonte.render('vidas:', True, (255,0,0))
         pontuacao_p1 = self.window.blit(pontuacao_p1, (10, 30))
-        vida_p1 = self.window.blit(vidas_p1, (10, 5))
+        self.window.blit(vidas_p1, (10, 5))
         self.window.blit(pontuacao_p2, (1300, 30))
         self.window.blit(vidas_p2, (1300, 5))
+        
+        for tupla in range(3):
+            barreira = pygame.Rect(Barreiras.gera_barreiras(self)[tupla][0], Barreiras.gera_barreiras(self)[tupla][1], 100, 10)
+            pygame.draw.rect(self.window, (255,255,255), barreira)
 
 
         pygame.display.update()
