@@ -40,7 +40,6 @@ class TelaInicio:
             elif event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
                 return 1
             elif event.type == pygame.KEYDOWN and event.key == pygame.K_i:
-                print(12)
                 return 2
         return 0
 
