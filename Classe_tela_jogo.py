@@ -6,6 +6,7 @@ from Classe_tiro_personagem import TiroPersonagem
 
 class TelaJogo:
     def __init__(self, window):
+        pygame.init()
         clock = pygame.time.Clock()
 
         # TELA E WINDOW
@@ -47,6 +48,9 @@ class TelaJogo:
 
         self.sprites_tiro = pygame.sprite.Group()
         self.tiro = TiroPersonagem((self.nave_pos[0], self.nave_pos[1]), imagem_inimigo_redimensionada, self.delta_t)
+
+        pygame.mixer.music.load('sons\Trilha Sonora do Game.mp3')
+        pygame.mixer.music.play()
            
 
     def calcula_deltaT(self):
