@@ -7,7 +7,6 @@ from Classe_tiro_personagem import TiroPersonagem
 class TelaJogo:
     def __init__(self, window):
         pygame.init()
-        clock = pygame.time.Clock()
 
         # TELA E WINDOW
         self.largura = 1520
