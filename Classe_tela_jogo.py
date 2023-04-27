@@ -66,7 +66,7 @@ class TelaJogo:
         for evento in pygame.event.get():
             if evento.type != pygame.MOUSEMOTION:
                 if evento.type == pygame.QUIT:
-                    return False
+                    return -1
                 elif evento.type == pygame.KEYDOWN or pygame.KEYUP:
                     self.nave.movimenta_nave(evento)
                     self.nave2.movimenta_nave(evento)
