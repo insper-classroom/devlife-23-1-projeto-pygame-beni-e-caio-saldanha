@@ -5,7 +5,7 @@ class TelaInstrucao:
     def __init__(self, window):
         self.window = window
         self.width_window= window.get_width()
-        imagem_fundo = pygame.image.load('Imagens\Space Background.png')
+        imagem_fundo = pygame.image.load('Imagens\SpaceBackground.png')
         self.imagem_fundo_redimensionada = pygame.transform.scale(imagem_fundo, (1520, 760))
 
     def desenha_tela(self):

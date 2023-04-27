@@ -38,6 +38,7 @@ class Nave:
                     self.vel_nave += v
 
             self.posicao_nave[0] += self.vel_nave * self.delta_t
+            
         
         else: 
 

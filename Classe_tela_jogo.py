@@ -18,17 +18,19 @@ class TelaJogo:
         imagem_nave_redimensionada1 = pygame.transform.scale(imagem_nave_p1, (95,95))
         imagem_nave_p2 = pygame.image.load('Imagens\Imagem_p2.png')
         imagem_nave_redimensionada2 = pygame.transform.scale(imagem_nave_p2, (95,95))
-        self.imagem_fundo = pygame.image.load('Imagens\Space Background.png')
+        self.imagem_fundo = pygame.image.load('Imagens\SpaceBackground.png')
         imagem_inimigo = pygame.image.load('Imagens\Imagem_inimigo1.png')
         imagem_inimigo_redimensionada = pygame.transform.scale(imagem_inimigo, (50,50))
         largura_inimigo = imagem_inimigo_redimensionada.get_width()
+        imagem_tiro_personagem = pygame.image.load('Imagens/tiro_personagem.png')
 
         self.ultimo_updated = -1
         self.delta_t = self.calcula_deltaT()
-        # 
         self.nave_pos = [380, 670]
         self.nave = Nave(self.window, self.nave_pos, imagem_nave_redimensionada1, 0, self.delta_t,1)
         self.nave2 = Nave(self.window, [1140, 670], imagem_nave_redimensionada2, 0, self.delta_t,2)
+        self.largura_personagem = imagem_nave_redimensionada1.get_width()
+
 
         largura_inimigo = imagem_inimigo_redimensionada.get_width()
         altura_inimigo = imagem_inimigo_redimensionada.get_height()
@@ -45,11 +47,13 @@ class TelaJogo:
             y += altura_inimigo
             x = 260
 
+        self.postiro = [380,670]
         self.sprites_tiro = pygame.sprite.Group()
-        self.tiro = TiroPersonagem((self.nave_pos[0], self.nave_pos[1]), imagem_inimigo_redimensionada, self.delta_t)
+        # self.tiro = TiroPersonagem([self.postiro[0] + (largura_personagem/2), self.postiro[1]], imagem_tiro_personagem, self.delta_t)
+
 
         pygame.mixer.music.load('sons\Trilha Sonora do Game.mp3')
-        pygame.mixer.music.play()
+        # pygame.mixer.music.play()
            
 
     def calcula_deltaT(self):
@@ -71,18 +75,21 @@ class TelaJogo:
                     self.nave.movimenta_nave(evento)
                     self.nave2.movimenta_nave(evento)
             if evento.type == pygame.KEYDOWN and evento.key == pygame.K_SPACE:
-                self.sprites_tiro.add(self.tiro)
-                print('n')
+                tiro_pos = [self.nave_pos[0] + (self.largura_personagem/2), self.nave_pos[1]]
+                tiro = TiroPersonagem(tiro_pos, self.delta_t)
+                self.sprites_tiro.add(tiro)
 
-        self.sprites_inimigo.update()
         self.sprites_tiro.update()
+        self.sprites_inimigo.update()
+
+        for i in self.sprites_tiro:
+            if tiro_pos[1] > 1400:
+                self.sprites_tiro.remove(i)
 
     
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return -1
-            elif event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
-                return 0
         return 1
     
     def desenha_tela(self):
@@ -92,6 +99,7 @@ class TelaJogo:
         self.nave.desenha_nave()
         self.nave2.desenha_nave()
         self.sprites_inimigo.draw(self.window)
+        self.sprites_tiro.draw(self.window)
         fonte = pygame.font.Font('Imagens\Sigmar-Regular.ttf', 24)
         score_p1 = 0
         score_p2 = 0
