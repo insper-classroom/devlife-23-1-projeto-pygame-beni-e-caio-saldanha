@@ -100,7 +100,7 @@ class TelaJogo:
         self.window.blit(vidas_p2, (1300, 5))
         
         for tupla in range(3):
-            barreira = pygame.Rect(Barreiras.gera_barreiras(self)[tupla][0], Barreiras.gera_barreiras(self)[tupla][1], 100, 10)
+            barreira = pygame.Rect(Barreiras.gera_barreiras(self)[tupla][0], Barreiras.gera_barreiras(self)[tupla][1], 120, 10)
             pygame.draw.rect(self.window, (255,255,255), barreira)
 
 
