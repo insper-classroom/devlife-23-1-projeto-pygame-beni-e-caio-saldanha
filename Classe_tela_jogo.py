@@ -90,11 +90,13 @@ class TelaJogo:
         self.nave2.desenha_nave()
         self.sprites_inimigo.draw(self.window)
         fonte = pygame.font.Font('Imagens\Sigmar-Regular.ttf', 24)
-        pontuacao_p1 = fonte.render('score:', True, (115,215,255))
+        score_p1 = 0
+        score_p2 = 0
+        pontuacao_p1 = fonte.render(f'score:  {score_p1}', True, (115,215,255))
         vidas_p1 = fonte.render('vidas:', True, (115,215,255))
-        pontuacao_p2 = fonte.render('score:', True, (255,0,0))
+        pontuacao_p2 = fonte.render(f'score:  {score_p2}', True, (255,0,0))
         vidas_p2 = fonte.render('vidas:', True, (255,0,0))
-        pontuacao_p1 = self.window.blit(pontuacao_p1, (10, 30))
+        self.window.blit(pontuacao_p1, (10, 30))
         self.window.blit(vidas_p1, (10, 5))
         self.window.blit(pontuacao_p2, (1300, 30))
         self.window.blit(vidas_p2, (1300, 5))
