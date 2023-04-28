@@ -14,6 +14,3 @@ class TiroPersonagem(pygame.sprite.Sprite):
 
     def update (self):
         self.rect.y -= self.velocidade * self.delta_t
-    
-
-

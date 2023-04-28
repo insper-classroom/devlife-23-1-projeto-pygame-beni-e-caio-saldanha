@@ -26,11 +26,13 @@ class TelaJogo:
 
         self.ultimo_updated = -1
         self.delta_t = self.calcula_deltaT()
-        self.nave_pos = [380, 670]
-        self.nave = Nave(self.window, self.nave_pos, imagem_nave_redimensionada1, 0, self.delta_t,1)
-        self.nave2 = Nave(self.window, [1140, 670], imagem_nave_redimensionada2, 0, self.delta_t,2)
+        self.nave1_pos = [380, 670]
+        self.nave2_pos = [1140, 670]
+        self.nave = Nave(self.window, self.nave1_pos, imagem_nave_redimensionada1, 0, self.delta_t,1)
+        self.nave2 = Nave(self.window, self.nave2_pos, imagem_nave_redimensionada2, 0, self.delta_t,2)
         self.largura_personagem = imagem_nave_redimensionada1.get_width()
 
+        self.som_tiro = pygame.mixer.Sound('sons\Som do tiro dos Players.mp3')
 
         largura_inimigo = imagem_inimigo_redimensionada.get_width()
         altura_inimigo = imagem_inimigo_redimensionada.get_height()
@@ -72,16 +74,21 @@ class TelaJogo:
                 elif evento.type == pygame.KEYDOWN or pygame.KEYUP:
                     self.nave.movimenta_nave(evento)
                     self.nave2.movimenta_nave(evento)
-            if evento.type == pygame.KEYDOWN and evento.key == pygame.K_SPACE:
-                tiro_pos = [self.nave_pos[0] + (self.largura_personagem/2), self.nave_pos[1]]
-                tiro = TiroPersonagem(tiro_pos, self.delta_t)
+            if evento.type == pygame.KEYDOWN and evento.key == pygame.K_w:
+                tiro = TiroPersonagem([self.nave1_pos[0] + (self.largura_personagem/2), self.nave1_pos[1]], self.delta_t)
                 self.sprites_tiro.add(tiro)
+                self.som_tiro.play()
+
+            if evento.type == pygame.KEYDOWN and evento.key == pygame.K_i:
+                tiro = TiroPersonagem([self.nave2_pos[0] + (self.largura_personagem/2), self.nave2_pos[1]], self.delta_t)
+                self.sprites_tiro.add(tiro)
+                self.som_tiro.play()                
 
         self.sprites_tiro.update()
         self.sprites_inimigo.update()
 
         for i in self.sprites_tiro:
-            if tiro_pos[1] > 1400:
+            if i.rect.y < 0:
                 self.sprites_tiro.remove(i)
 
     
