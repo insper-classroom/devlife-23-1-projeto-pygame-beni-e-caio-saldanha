@@ -22,7 +22,15 @@ class TelaJogo:
         imagem_inimigo = pygame.image.load('Imagens\Imagem_inimigo1.png')
         imagem_inimigo_redimensionada = pygame.transform.scale(imagem_inimigo, (50,50))
         largura_inimigo = imagem_inimigo_redimensionada.get_width()
-        imagem_tiro_personagem = pygame.image.load('Imagens/tiro_personagem.png')
+
+        # x_barreira = 200
+        # y_barreira = 650
+        # rect_barreira = Barreiras(x_barreira, y_barreira)
+        # self.grupo_barreiras = pygame.sprite.Group()
+        # for __ in range (3):
+        #     self.grupo_barreiras.add(rect_barreira)
+        #     x_barreira += 500
+
 
         self.ultimo_updated = -1
         self.delta_t = self.calcula_deltaT()
@@ -53,7 +61,7 @@ class TelaJogo:
         self.sprites_tiro = pygame.sprite.Group()
 
         pygame.mixer.music.load('sons\Trilha Sonora do Game.mp3')
-        pygame.mixer.music.play(loops=-1)
+        # pygame.mixer.music.play(loops=-1)
            
 
     def calcula_deltaT(self):
@@ -74,27 +82,34 @@ class TelaJogo:
                 elif evento.type == pygame.KEYDOWN or pygame.KEYUP:
                     self.nave.movimenta_nave(evento)
                     self.nave2.movimenta_nave(evento)
-            if evento.type == pygame.KEYDOWN and evento.key == pygame.K_w:
-                tiro = TiroPersonagem([self.nave1_pos[0] + (self.largura_personagem/2), self.nave1_pos[1]], self.delta_t)
-                self.sprites_tiro.add(tiro)
-                self.som_tiro.play()
+                if evento.type == pygame.KEYDOWN and evento.key == pygame.K_w:
+                    tiro = TiroPersonagem([self.nave1_pos[0] + (self.largura_personagem/2), self.nave1_pos[1]], self.delta_t)
+                    self.sprites_tiro.add(tiro)
+                    self.som_tiro.play()
 
-            if evento.type == pygame.KEYDOWN and evento.key == pygame.K_i:
-                tiro = TiroPersonagem([self.nave2_pos[0] + (self.largura_personagem/2), self.nave2_pos[1]], self.delta_t)
-                self.sprites_tiro.add(tiro)
-                self.som_tiro.play()                
+                if evento.type == pygame.KEYDOWN and evento.key == pygame.K_i:
+                    tiro = TiroPersonagem([self.nave2_pos[0] + (self.largura_personagem/2), self.nave2_pos[1]], self.delta_t)
+                    self.sprites_tiro.add(tiro)
+                    self.som_tiro.play()                
 
         self.sprites_tiro.update()
         self.sprites_inimigo.update()
+        print(self.sprites_inimigo)
+           
 
-        for i in self.sprites_tiro:
-            if i.rect.y < 0:
-                self.sprites_tiro.remove(i)
-
+        for inimigo in self.sprites_inimigo:
+            for tiro_i in self.sprites_tiro:
+                if pygame.sprite.collide_rect(inimigo, tiro_i):
+                    self.sprites_inimigo.remove(inimigo)
+                    self.sprites_tiro.remove(tiro_i)
+                elif tiro_i.rect.y < 0:
+                    self.sprites_tiro.remove(tiro_i)
     
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return -1
+            # elif self.sprites_inimigo.has(0*self.inimigo):
+            #     return 3
         return 1
     
     def desenha_tela(self):
@@ -105,6 +120,7 @@ class TelaJogo:
         self.nave2.desenha_nave()
         self.sprites_inimigo.draw(self.window)
         self.sprites_tiro.draw(self.window)
+        # self.grupo_barreiras.draw(self.window)
         fonte = pygame.font.Font('Imagens\Sigmar-Regular.ttf', 24)
         score_p1 = 0
         score_p2 = 0
@@ -116,12 +132,6 @@ class TelaJogo:
         self.window.blit(vidas_p1, (10, 5))
         self.window.blit(pontuacao_p2, (1300, 30))
         self.window.blit(vidas_p2, (1300, 5))
-        
-        for tupla in range(3):
-            barreira = pygame.Rect(Barreiras.gera_barreiras(self)[tupla][0], Barreiras.gera_barreiras(self)[tupla][1], 120, 10)
-            pygame.draw.rect(self.window, (255,255,255), barreira)
 
 
-        pygame.display.update()
-    
-    
+        pygame.display.update()   

@@ -1,20 +1,13 @@
 import pygame
 
-class Barreiras:
-    def init(self,window,posx,posy,largura,altura):
-        self.window = window
-        self.posx = posx 
-        self.posy = posy
-        self.largura = largura
-        self.altura = altura
+class Barreiras(pygame.sprite.Sprite):
+    def init(self, pos_x, pos_y):
+        super().__init__()
+        self.posx = pos_x
+        self.posy = pos_y
+        self.largura = 120
+        self.altura = 10
     
-    def gera_barreiras(self):
-        lista_barreiras = []
-        self.posx = 200
-        self.posy = 650
-        for _ in range(3):
-            lista_barreiras.append((self.posx, self.posy))
-            self.posx += 500
-        
-        return lista_barreiras
-
+    def update(self):
+        barreira = pygame.draw.rect(self.window, (255,255,255), (self.posx, self.posy, self.largura, self.altura))
+        return barreira

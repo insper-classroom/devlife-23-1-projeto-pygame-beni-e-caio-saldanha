@@ -2,6 +2,7 @@ import pygame
 from Classe_tela_jogo import *
 from Classe_tela_inicio import *
 from Classe_tela_instrucoes import *
+from Classe_tela_vitoria import *
 
 class ControlaTelas:
     def __init__(self):
@@ -14,6 +15,7 @@ class ControlaTelas:
         self.TelaInicio = TelaInicio(self.window)
         self.TelaInstrucoes = TelaInstrucao(self.window)
         self.lista_telas = [self.TelaInicio, self.TelaJogo, self.TelaInstrucoes]
+        self.TelaVitoria = TelaVitoria(self.window)
         indice_tela = 0
         self.tela = self.lista_telas[indice_tela]
     
