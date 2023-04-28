@@ -10,6 +10,7 @@ class Nave:
         self.window = window
         self.n_nave = n_nave
         self.imagem_redimensionada = imagem_redimensionada
+        self.rect = self.imagem_redimensionada.get_rect()
 
     def desenha_nave(self):
         self.window.blit(self.imagem_redimensionada, self.posicao_nave)

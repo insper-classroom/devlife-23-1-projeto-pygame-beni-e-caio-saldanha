@@ -1,4 +1,5 @@
 import pygame
+import math
 
 class Inimigo(pygame.sprite.Sprite):
 
@@ -15,7 +16,6 @@ class Inimigo(pygame.sprite.Sprite):
 
 
     def update(self):
-
         if self.rect.x < self.min_x: 
             self.velocidade = abs(self.velocidade)
             self.rect.y += self.image.get_height()

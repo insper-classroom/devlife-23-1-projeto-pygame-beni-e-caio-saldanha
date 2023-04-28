@@ -1,8 +1,10 @@
 import pygame
+import random
 from Classe_da_nave import Nave
 from Classe_do_inimigo import Inimigo
 from Classe_cria_barreiras import Barreiras
 from Classe_tiro_personagem import TiroPersonagem
+from Classe_tiro_inimigo import TiroInimigo
 
 class TelaJogo:
     def __init__(self, window):
@@ -59,6 +61,7 @@ class TelaJogo:
 
         self.postiro = [380,670]
         self.sprites_tiro = pygame.sprite.Group()
+        self.sprites_tiro_inimigo = pygame.sprite.Group()
 
         pygame.mixer.music.load('sons\Trilha Sonora do Game.mp3')
         # pygame.mixer.music.play(loops=-1)
@@ -90,12 +93,14 @@ class TelaJogo:
                 if evento.type == pygame.KEYDOWN and evento.key == pygame.K_i:
                     tiro = TiroPersonagem([self.nave2_pos[0] + (self.largura_personagem/2), self.nave2_pos[1]], self.delta_t)
                     self.sprites_tiro.add(tiro)
-                    self.som_tiro.play()                
+                    self.som_tiro.play() 
+            
 
         self.sprites_tiro.update()
         self.sprites_inimigo.update()
-        print(self.sprites_inimigo)
-           
+
+
+        numero_sorteado = random.randint(1, 50)
 
         for inimigo in self.sprites_inimigo:
             for tiro_i in self.sprites_tiro:
@@ -104,6 +109,17 @@ class TelaJogo:
                     self.sprites_tiro.remove(tiro_i)
                 elif tiro_i.rect.y < 0:
                     self.sprites_tiro.remove(tiro_i)
+
+            if numero_sorteado == 3:
+                tiro_inimigo = TiroInimigo((inimigo.rect.x, inimigo.rect.y), self.delta_t)
+                self.sprites_tiro_inimigo.add(tiro_inimigo)
+                if pygame.Rect.colliderect(tiro_inimigo.rect, self.nave2.rect):
+                    print('colidiu')
+                    self.sprites_tiro_inimigo.remove(tiro_inimigo)
+                print(tiro_inimigo.rect)
+                print(self.nave.rect)
+
+        self.sprites_tiro_inimigo.update()
     
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -120,7 +136,7 @@ class TelaJogo:
         self.nave2.desenha_nave()
         self.sprites_inimigo.draw(self.window)
         self.sprites_tiro.draw(self.window)
-        # self.grupo_barreiras.draw(self.window)
+        self.sprites_tiro_inimigo.draw(self.window)
         fonte = pygame.font.Font('Imagens\Sigmar-Regular.ttf', 24)
         score_p1 = 0
         score_p2 = 0
