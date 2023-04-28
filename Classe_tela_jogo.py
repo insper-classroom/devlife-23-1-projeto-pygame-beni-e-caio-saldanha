@@ -49,11 +49,9 @@ class TelaJogo:
 
         self.postiro = [380,670]
         self.sprites_tiro = pygame.sprite.Group()
-        # self.tiro = TiroPersonagem([self.postiro[0] + (largura_personagem/2), self.postiro[1]], imagem_tiro_personagem, self.delta_t)
-
 
         pygame.mixer.music.load('sons\Trilha Sonora do Game.mp3')
-        # pygame.mixer.music.play()
+        pygame.mixer.music.play(loops=-1)
            
 
     def calcula_deltaT(self):
