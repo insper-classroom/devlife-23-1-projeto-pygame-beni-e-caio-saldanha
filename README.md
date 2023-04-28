@@ -3,6 +3,8 @@
 # Galactic Warfare
 Jogo produzido por Beni Sliozbergas e Caio Saldanha
 
+O Galactic Warfare é um jogo de tiro em que o jogador assume o controle de uma nave espacial que deve defender a Terra de uma invasão alienígena. Os jogadores devem destruir as naves alienígenas inimigas que descem em formação do topo da tela, antes que elas alcancem o solo. O jogo é dividido em várias fases, cada uma com um número crescente de naves inimigas e diferentes tipos de obstáculos. À medida que o jogador progride nas fases, as naves inimigas se tornam mais difíceis de destruir e se movem mais rapidamente. O jogo pode ser jogado sozinho ou em modo multiplayer, onde dois jogadores podem jogar um contra o outro para ver quem derrota a invasão alienígena com maior eficácia. O objetivo final do jogo é chegar ao chefe final e derrotá-lo para salvar a Terra e completar o jogo.
+
 Créditos:
 - Trilha sonoroa foi pega do filme Star Wars 
 - Os outros sons do game foram pegos do site: FreeSound
