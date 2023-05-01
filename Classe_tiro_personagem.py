@@ -5,7 +5,7 @@ class TiroPersonagem(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         self.posicao = posicao_tiro
         self.delta_t = delta_t
-        self.velocidade = 120
+        self.velocidade = 100
         self.image = imagem_tiro
         self.rect = self.image.get_rect()
         self.rect.x = self.posicao[0]

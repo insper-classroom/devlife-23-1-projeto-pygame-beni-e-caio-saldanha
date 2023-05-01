@@ -14,13 +14,15 @@ class ControlaTelas:
         self.TelaJogo = TelaJogo(self.window)
         self.TelaInicio = TelaInicio(self.window)
         self.TelaInstrucoes = TelaInstrucao(self.window)
-        self.lista_telas = [self.TelaInicio, self.TelaJogo, self.TelaInstrucoes]
         self.TelaVitoria = TelaVitoria(self.window)
+
+        self.lista_telas = [self.TelaInicio, self.TelaJogo, self.TelaInstrucoes, self.TelaVitoria]
         indice_tela = 0
         self.tela = self.lista_telas[indice_tela]
     
     def atualiza_telas(self):
         indice_tela = self.tela.atualiza_estado()
+        print(indice_tela)
         if indice_tela == -1:
             return False
         else:

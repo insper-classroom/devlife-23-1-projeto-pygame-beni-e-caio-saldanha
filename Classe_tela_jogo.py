@@ -27,10 +27,10 @@ class TelaJogo:
 
         # x_barreira = 200
         # y_barreira = 650
-        # rect_barreira = Barreiras(x_barreira, y_barreira)
         # self.grupo_barreiras = pygame.sprite.Group()
         # for __ in range (3):
-        #     self.grupo_barreiras.add(rect_barreira)
+        #     barreira = Barreiras(x_barreira, y_barreira)
+        #     self.grupo_barreiras.add(barreira)
         #     x_barreira += 500
 
 
@@ -64,7 +64,7 @@ class TelaJogo:
         self.sprites_tiro_inimigo = pygame.sprite.Group()
 
         pygame.mixer.music.load('sons\Trilha Sonora do Game.mp3')
-        # pygame.mixer.music.play(loops=-1)
+        pygame.mixer.music.play(loops=-1)
            
 
     def calcula_deltaT(self):
@@ -111,22 +111,27 @@ class TelaJogo:
                     self.sprites_tiro.remove(tiro_i)
 
         if numero_sorteado == 3:
-            inimigo_aleatorio = random.choice(self.sprites_inimigo.sprites())
-            tiro_inimigo = TiroInimigo((inimigo_aleatorio.rect.x, inimigo_aleatorio.rect.y), self.delta_t)
-            self.sprites_tiro_inimigo.add(tiro_inimigo)
+            if len(self.sprites_inimigo) > 1:
+                inimigo_aleatorio = random.choice(self.sprites_inimigo.sprites())
+                tiro_inimigo = TiroInimigo((inimigo_aleatorio.rect.x, inimigo_aleatorio.rect.y), self.delta_t)
+                self.sprites_tiro_inimigo.add(tiro_inimigo)
+            else:
+                for inimigo in self.sprites_inimigo:
+                    tiro_inimigo = TiroInimigo((inimigo.rect.x, inimigo.rect.y), self.delta_t)
+                    self.sprites_tiro_inimigo.add(tiro_inimigo)
             if pygame.Rect.colliderect(tiro_inimigo.rect, self.nave2.rect):
                 print('colidiu')
                 self.sprites_tiro_inimigo.remove(tiro_inimigo)
-            print(tiro_inimigo.rect)
-            print(self.nave.rect)
+            # print(tiro_inimigo.rect)
+            # print(self.nave.rect)
 
         self.sprites_tiro_inimigo.update()
     
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return -1
-            # elif self.sprites_inimigo.has(0*self.inimigo):
-            #     return 3
+        if len(self.sprites_inimigo) == 0:
+            return 3
         return 1
     
     def desenha_tela(self):
@@ -138,6 +143,7 @@ class TelaJogo:
         self.sprites_inimigo.draw(self.window)
         self.sprites_tiro.draw(self.window)
         self.sprites_tiro_inimigo.draw(self.window)
+        # self.grupo_barreiras.draw(self.window)
         fonte = pygame.font.Font('Imagens\Sigmar-Regular.ttf', 24)
         score_p1 = 0
         score_p2 = 0
