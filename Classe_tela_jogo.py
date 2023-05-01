@@ -100,7 +100,7 @@ class TelaJogo:
         self.sprites_inimigo.update()
 
 
-        numero_sorteado = random.randint(1, 50)
+        numero_sorteado = random.randint(1, 25)
 
         for inimigo in self.sprites_inimigo:
             for tiro_i in self.sprites_tiro:
@@ -110,14 +110,15 @@ class TelaJogo:
                 elif tiro_i.rect.y < 0:
                     self.sprites_tiro.remove(tiro_i)
 
-            if numero_sorteado == 3:
-                tiro_inimigo = TiroInimigo((inimigo.rect.x, inimigo.rect.y), self.delta_t)
-                self.sprites_tiro_inimigo.add(tiro_inimigo)
-                if pygame.Rect.colliderect(tiro_inimigo.rect, self.nave2.rect):
-                    print('colidiu')
-                    self.sprites_tiro_inimigo.remove(tiro_inimigo)
-                print(tiro_inimigo.rect)
-                print(self.nave.rect)
+        if numero_sorteado == 3:
+            inimigo_aleatorio = random.choice(self.sprites_inimigo.sprites())
+            tiro_inimigo = TiroInimigo((inimigo_aleatorio.rect.x, inimigo_aleatorio.rect.y), self.delta_t)
+            self.sprites_tiro_inimigo.add(tiro_inimigo)
+            if pygame.Rect.colliderect(tiro_inimigo.rect, self.nave2.rect):
+                print('colidiu')
+                self.sprites_tiro_inimigo.remove(tiro_inimigo)
+            print(tiro_inimigo.rect)
+            print(self.nave.rect)
 
         self.sprites_tiro_inimigo.update()
     
