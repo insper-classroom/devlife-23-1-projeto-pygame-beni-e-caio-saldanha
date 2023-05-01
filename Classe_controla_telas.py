@@ -3,6 +3,7 @@ from Classe_tela_jogo import *
 from Classe_tela_inicio import *
 from Classe_tela_instrucoes import *
 from Classe_tela_vitoria import *
+from Classe_tela_derrota import *
 
 class ControlaTelas:
     def __init__(self):
@@ -15,14 +16,14 @@ class ControlaTelas:
         self.TelaInicio = TelaInicio(self.window)
         self.TelaInstrucoes = TelaInstrucao(self.window)
         self.TelaVitoria = TelaVitoria(self.window)
+        self.TelaDerrota = TelaDerrota(self.window)
 
-        self.lista_telas = [self.TelaInicio, self.TelaJogo, self.TelaInstrucoes, self.TelaVitoria]
+        self.lista_telas = [self.TelaInicio, self.TelaJogo, self.TelaInstrucoes, self.TelaVitoria, self.TelaDerrota]
         indice_tela = 0
         self.tela = self.lista_telas[indice_tela]
     
     def atualiza_telas(self):
         indice_tela = self.tela.atualiza_estado()
-        print(indice_tela)
         if indice_tela == -1:
             return False
         else:

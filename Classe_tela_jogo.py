@@ -132,6 +132,8 @@ class TelaJogo:
                 return -1
         if len(self.sprites_inimigo) == 0:
             return 3
+        if self.inimigo.rect.y > 640:
+            return 4
         return 1
     
     def desenha_tela(self):
