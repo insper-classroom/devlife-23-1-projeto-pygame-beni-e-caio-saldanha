@@ -1,20 +1,18 @@
 import pygame
 
 
-class Nave:
+class Nave(pygame.sprite.Sprite):
     
-    def __init__(self,window,pos,imagem_redimensionada,vel_nave,delta_t,n_nave):
-        self.posicao_nave = pos
-        self.vel_nave = vel_nave
+    def __init__(self,pos,imagem_redimensionada,delta_t,n_nave):
+        pygame.sprite.Sprite.__init__(self)
+        self.vel_nave1 = 0
+        self.vel_nave2 = 0
         self.delta_t = delta_t
-        self.window = window
         self.n_nave = n_nave
-        self.imagem_redimensionada = imagem_redimensionada
-        self.rect = self.imagem_redimensionada.get_rect()
-
-    def desenha_nave(self):
-        self.window.blit(self.imagem_redimensionada, self.posicao_nave)
-
+        self.image = imagem_redimensionada
+        self.rect = self.image.get_rect()
+        self.rect.x = pos[0]
+        self.rect.y = pos[1]
 
     def movimenta_nave(self, evento):
 
@@ -22,42 +20,45 @@ class Nave:
         
         if self.n_nave == 1:
 
-            if self.posicao_nave[0] < 0:
-                self.posicao_nave[0] = 0
-            elif self.posicao_nave[0] > 1440:
-                self.posicao_nave[0] = 1440
+            if self.rect.x < 0:
+                self.rect.x = 0
+            elif self.rect.x > 1440:
+                self.rect.x = 1440
 
             if evento.type == pygame.KEYDOWN:
                 if evento.key == pygame.K_d:
-                    self.vel_nave += v
+                    self.vel_nave1 += v
                 elif evento.key == pygame.K_a:
-                    self.vel_nave -= v
+                    self.vel_nave1-= v
             elif evento.type == pygame.KEYUP:
                 if evento.key == pygame.K_d:
-                    self.vel_nave -= v
+                    self.vel_nave1 -= v
                 elif evento.key == pygame.K_a:
-                    self.vel_nave += v
+                    self.vel_nave1 += v
 
-            self.posicao_nave[0] += self.vel_nave * self.delta_t
+            self.rect.x += self.vel_nave1 * self.delta_t
             
         
         else: 
 
-            if self.posicao_nave[0] < 0:
-                self.posicao_nave[0] = 0
-            elif self.posicao_nave[0] > 1440:
-                self.posicao_nave[0] = 1440
+            if self.rect.x < 0:
+                self.rect.x = 0
+            elif self.rect.x > 1440:
+                self.rect.x = 1440
 
             if evento.type == pygame.KEYDOWN:
                 if evento.key == pygame.K_l:
-                    self.vel_nave += v
+                    self.vel_nave2 += v
                 elif evento.key == pygame.K_j:
-                    self.vel_nave -= v
+                    self.vel_nave2 -= v
             elif evento.type == pygame.KEYUP:
                 if evento.key == pygame.K_l:
-                    self.vel_nave -= v
+                    self.vel_nave2 -= v
                 elif evento.key == pygame.K_j:
-                    self.vel_nave += v
+                    self.vel_nave2 += v
 
 
-            self.posicao_nave[0] += self.vel_nave * self.delta_t
+            self.rect.x += self.vel_nave2 * self.delta_t
+
+# class NaveVermelha(Nave):
+    

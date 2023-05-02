@@ -38,8 +38,11 @@ class TelaJogo:
         self.delta_t = self.calcula_deltaT()
         self.nave1_pos = [380, 670]
         self.nave2_pos = [1140, 670]
-        self.nave = Nave(self.window, self.nave1_pos, imagem_nave_redimensionada1, 0, self.delta_t,1)
-        self.nave2 = Nave(self.window, self.nave2_pos, imagem_nave_redimensionada2, 0, self.delta_t,2)
+        self.grupo_personagem = pygame.sprite.Group()
+        self.nave = Nave(self.nave1_pos, imagem_nave_redimensionada1, self.delta_t,1)
+        self.nave2 = Nave(self.nave2_pos, imagem_nave_redimensionada2, self.delta_t,2)
+        self.grupo_personagem.add(self.nave)
+        self.grupo_personagem.add(self.nave2)
         self.largura_personagem = imagem_nave_redimensionada1.get_width()
 
         self.som_tiro = pygame.mixer.Sound('sons\Som do tiro dos Players.mp3')
@@ -64,7 +67,7 @@ class TelaJogo:
         self.sprites_tiro_inimigo = pygame.sprite.Group()
 
         pygame.mixer.music.load('sons\Trilha Sonora do Game.mp3')
-        pygame.mixer.music.play(loops=-1)
+        # pygame.mixer.music.play(loops=-1)
            
 
     def calcula_deltaT(self):
@@ -86,12 +89,12 @@ class TelaJogo:
                     self.nave.movimenta_nave(evento)
                     self.nave2.movimenta_nave(evento)
                 if evento.type == pygame.KEYDOWN and evento.key == pygame.K_w:
-                    tiro = TiroPersonagem([self.nave1_pos[0] + (self.largura_personagem/2), self.nave1_pos[1]], self.delta_t)
+                    tiro = TiroPersonagem([self.nave.rect.x + (self.largura_personagem/2), self.nave1_pos[1]], self.delta_t)
                     self.sprites_tiro.add(tiro)
                     self.som_tiro.play()
 
                 if evento.type == pygame.KEYDOWN and evento.key == pygame.K_i:
-                    tiro = TiroPersonagem([self.nave2_pos[0] + (self.largura_personagem/2), self.nave2_pos[1]], self.delta_t)
+                    tiro = TiroPersonagem([self.nave2.rect.x + (self.largura_personagem/2), self.nave2_pos[1]], self.delta_t)
                     self.sprites_tiro.add(tiro)
                     self.som_tiro.play() 
             
@@ -119,12 +122,9 @@ class TelaJogo:
                 for inimigo in self.sprites_inimigo:
                     tiro_inimigo = TiroInimigo((inimigo.rect.x, inimigo.rect.y), self.delta_t)
                     self.sprites_tiro_inimigo.add(tiro_inimigo)
-            if pygame.Rect.colliderect(tiro_inimigo.rect, self.nave2.rect):
-                print('colidiu')
-                self.sprites_tiro_inimigo.remove(tiro_inimigo)
-            # print(tiro_inimigo.rect)
-            # print(self.nave.rect)
-
+        if pygame.sprite.spritecollide(self.nave, self.sprites_tiro_inimigo, True):
+            print('colidiu')
+        print(self.nave.rect.x)
         self.sprites_tiro_inimigo.update()
     
         for event in pygame.event.get():
@@ -140,11 +140,10 @@ class TelaJogo:
         
         self.window.fill((255, 255, 255))
         self.window.blit(self.imagem_fundo, (0,0))
-        self.nave.desenha_nave()
-        self.nave2.desenha_nave()
         self.sprites_inimigo.draw(self.window)
         self.sprites_tiro.draw(self.window)
         self.sprites_tiro_inimigo.draw(self.window)
+        self.grupo_personagem.draw(self.window)
         # self.grupo_barreiras.draw(self.window)
         fonte = pygame.font.Font('Imagens\Sigmar-Regular.ttf', 24)
         score_p1 = 0
