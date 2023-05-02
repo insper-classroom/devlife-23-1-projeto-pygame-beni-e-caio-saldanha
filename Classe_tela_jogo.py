@@ -87,8 +87,8 @@ class TelaJogo:
         self.score_p2 = 0
 
         self.som_tiro = pygame.mixer.Sound('sons\Som-do-tiro-dos-Players.wav')
-        self.som_tiro_inimigo = pygame.mixer.Sound('sons\Som tiro do inimigo.mp3')
-        self.explosao_inimiga = pygame.mixer.Sound('sons\Explosão.wav')
+        self.som_tiro_inimigo = pygame.mixer.Sound('sons\Som-tiro-do-inimigo.wav')
+        self.explosao_inimiga = pygame.mixer.Sound('sons\explosão_inimiga.wav')
 
         largura_inimigo = imagem_inimigo_redimensionada.get_width()
         altura_inimigo = imagem_inimigo_redimensionada.get_height()
@@ -110,7 +110,7 @@ class TelaJogo:
         self.sprites_tiro_inimigo = pygame.sprite.Group()
 
         pygame.mixer.music.load('sons\Trilha Sonora do Game.mp3')
-        # pygame.mixer.music.play(loops=-1)
+        pygame.mixer.music.play(loops=-1)
 
     def calcula_deltaT(self):
         """
