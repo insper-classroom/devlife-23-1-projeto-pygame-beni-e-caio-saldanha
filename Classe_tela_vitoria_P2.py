@@ -55,6 +55,4 @@ class TelaVitoriaP2:
         for evento in pygame.event.get():
             if evento.type == pygame.QUIT:
                 return -1
-            if evento.type == pygame.KEYDOWN and evento.key == pygame.K_v:
-                return 0
         return 4

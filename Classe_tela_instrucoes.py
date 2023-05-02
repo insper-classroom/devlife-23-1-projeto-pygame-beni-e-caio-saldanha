@@ -65,7 +65,7 @@ class TelaInstrucao:
         self.widht_texto_i3 = fonte_i3.get_width()
         self.window.blit(fonte_i3, ((self.width_window//2)-(self.widht_texto_i3//2),450))
 
-        fonte_i4 = fonte_texto.render('Existem 3 tipos de naves inimigas', fonte_texto, cor)
+        fonte_i4 = fonte_texto.render('Ha um tipo de nave inimiga', fonte_texto, cor)
         self.widht_texto_i4 = fonte_i4.get_width()
         self.window.blit(fonte_i4, ((self.width_window//2)-(self.widht_texto_i4//2),500))
 
@@ -73,7 +73,7 @@ class TelaInstrucao:
         self.widht_texto_i5 = fonte_i5.get_width()
         self.window.blit(fonte_i5, ((self.width_window//2)-(self.widht_texto_i5//2),550))
 
-        fonte_i6 = fonte_texto.render('Cada tipo de nave inimiga vale uma quantidade de pontos, ganha quem fizer mais pontos', fonte_texto, cor)
+        fonte_i6 = fonte_texto.render('Cada kill vale uma quantidade de pontos, ganha quem fizer mais pontos', fonte_texto, cor)
         self.widht_texto_i6 = fonte_i6.get_width()
         self.window.blit(fonte_i6, ((self.width_window//2)-(self.widht_texto_i6//2),600))
 
