@@ -29,7 +29,7 @@ class TelaVitoriaP1:
         """
 
         pygame.init()
-        cor_p = (0,0,255)
+        cor_p = (115,215,255)
         cor = (255,255,255)
         self.window.fill((255, 255, 255))
         self.window.blit(self.imagem_fundo_redimensionada, (0,0))
