@@ -29,6 +29,7 @@ class TelaVitoriaP2:
         """
 
         pygame.init()
+        cor_p = (255,0,0)
         cor = (255,255,255)
         self.window.fill((255, 255, 255))
         self.window.blit(self.imagem_fundo_redimensionada, (0,0))
@@ -39,7 +40,7 @@ class TelaVitoriaP2:
         self.window.blit(fonte_titulo_desenha, ((self.width_window//2)-(self.widht_texto_titulo//2),180))   
 
         fonte_win = pygame.font.Font('Imagens\Sigmar-Regular.ttf', 50)
-        fonte_win_desenha = fonte_win.render('Parabéns, o Player 2 venceu!', fonte_win, cor)
+        fonte_win_desenha = fonte_win.render('Parabéns, o Player 2 venceu!', fonte_win, cor_p)
         self.widht_texto_win = fonte_win_desenha.get_width()
         self.window.blit(fonte_win_desenha, ((self.width_window//2)-(self.widht_texto_win//2),480))
 
