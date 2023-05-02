@@ -54,6 +54,7 @@ class TelaJogo:
         self.img_vidas = pygame.transform.scale(imagem_nave_p1, (40,40))
         imagem_nave_p2 = pygame.image.load('Imagens\Imagem_p2.png')
         imagem_nave_redimensionada2 = pygame.transform.scale(imagem_nave_p2, (95,95))
+        self.img_vidas_2 = pygame.transform.scale(imagem_nave_p2, (40,40))
         self.imagem_fundo = pygame.image.load('Imagens\SpaceBackground.png')
         imagem_inimigo = pygame.image.load('Imagens\Imagem_inimigo1.png')
         imagem_inimigo_redimensionada = pygame.transform.scale(imagem_inimigo, (50,50))
@@ -177,13 +178,9 @@ class TelaJogo:
             if event.type == pygame.QUIT:
                 return -1
         if len(self.sprites_inimigo) == 0:
-            if self.score_p1 > self.score_p2:
-                return 3
-            else:
-                self.quem_ganhou = 'Player 2'
-            return 4
+            return 3
         if self.inimigo.rect.y > 640:
-            return 5
+            return 4
         return 1
     
     def desenha_tela(self):
@@ -208,6 +205,7 @@ class TelaJogo:
         self.window.blit(self.img_vidas, (90,5))
         self.window.blit(pontuacao_p2, (1300, 30))
         self.window.blit(vidas_p2, (1300, 5))
+        self.window.blit(self.img_vidas_2,(1380,5))
 
 
         pygame.display.update()   
