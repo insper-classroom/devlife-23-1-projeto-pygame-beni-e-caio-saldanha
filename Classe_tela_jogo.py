@@ -87,6 +87,8 @@ class TelaJogo:
         self.score_p2 = 0
 
         self.som_tiro = pygame.mixer.Sound('sons\Som-do-tiro-dos-Players.wav')
+        self.som_tiro_inimigo = pygame.mixer.Sound('sons\Som tiro do inimigo.mp3')
+        self.explosao_inimiga = pygame.mixer.Sound('sons\Explosão.wav')
 
         largura_inimigo = imagem_inimigo_redimensionada.get_width()
         altura_inimigo = imagem_inimigo_redimensionada.get_height()
@@ -157,6 +159,7 @@ class TelaJogo:
                 if pygame.sprite.collide_rect(inimigo, tiro_i):
                     self.sprites_inimigo.remove(inimigo)
                     self.sprites_tiro.remove(tiro_i)
+                    self.explosao_inimiga.play()
                     if tiro_i.quem_atirou == 'p1':
                         self.score_p1 += 30
                     elif tiro_i.quem_atirou == 'p2':
@@ -169,10 +172,12 @@ class TelaJogo:
                 inimigo_aleatorio = random.choice(self.sprites_inimigo.sprites())
                 tiro_inimigo = TiroInimigo((inimigo_aleatorio.rect.x, inimigo_aleatorio.rect.y), self.delta_t)
                 self.sprites_tiro_inimigo.add(tiro_inimigo)
+                self.som_tiro_inimigo.play()
             else:
                 for inimigo in self.sprites_inimigo:
                     tiro_inimigo = TiroInimigo((inimigo.rect.x, inimigo.rect.y), self.delta_t)
                     self.sprites_tiro_inimigo.add(tiro_inimigo)
+                    self.som_tiro_inimigo.play()
         if pygame.sprite.spritecollide(self.nave, self.sprites_tiro_inimigo, True):
             self.lista_de_vidas_1.pop()
             self.contador_vidas_1 -= 1
