@@ -42,7 +42,7 @@ class TelaJogo:
         self.nave2 = Nave(self.window, self.nave2_pos, imagem_nave_redimensionada2, 0, self.delta_t,2)
         self.largura_personagem = imagem_nave_redimensionada1.get_width()
 
-        self.som_tiro = pygame.mixer.Sound('sons\Som do tiro dos Players.mp3')
+        self.som_tiro = pygame.mixer.Sound('sons\Som-do-tiro-dos-Players.wav')
 
         largura_inimigo = imagem_inimigo_redimensionada.get_width()
         altura_inimigo = imagem_inimigo_redimensionada.get_height()
@@ -122,8 +122,6 @@ class TelaJogo:
             if pygame.Rect.colliderect(tiro_inimigo.rect, self.nave2.rect):
                 print('colidiu')
                 self.sprites_tiro_inimigo.remove(tiro_inimigo)
-            # print(tiro_inimigo.rect)
-            # print(self.nave.rect)
 
         self.sprites_tiro_inimigo.update()
     
