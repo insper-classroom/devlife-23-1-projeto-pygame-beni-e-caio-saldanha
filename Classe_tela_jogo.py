@@ -50,6 +50,7 @@ class TelaJogo:
 
         TIRO = pygame.image.load('Imagens/tiro_personagem.png')
         TIRO_REDIMENSIONADO = pygame.transform.scale_by(TIRO, 2)
+        TIRO_INIMIGO = pygame.image.load('Imagens/tiro_inimigo.png')
 
         imagem_nave_p1 = pygame.image.load('Imagens\Imagem_p1.png')
         imagem_nave_redimensionada1 = pygame.transform.scale(imagem_nave_p1, (95,95))
@@ -72,6 +73,13 @@ class TelaJogo:
             self.lista_sprites_tiro_personagem.append(imagem_tiro_personagem)
         index_tiro_personagem = 0
         self.img_tiro_personagem = self.lista_sprites_tiro_personagem[index_tiro_personagem]
+
+        self.lista_sprites_tiro_inimigo = []
+        for i2 in range (4):
+            imagem_tiro_inimigo = TIRO_INIMIGO.subsurface((i2 * 18, 0), (18, 38))
+            self.lista_sprites_tiro_inimigo.append(imagem_tiro_inimigo)
+        index_tiro_inimigo = 0
+        self.img_tiro_inimigo = self.lista_sprites_tiro_inimigo[index_tiro_inimigo]
 
         self.ultimo_updated = -1
         self.delta_t = self.calcula_deltaT()
@@ -171,12 +179,12 @@ class TelaJogo:
         if numero_sorteado == 3:
             if len(self.sprites_inimigo) > 1:
                 inimigo_aleatorio = random.choice(self.sprites_inimigo.sprites())
-                tiro_inimigo = TiroInimigo((inimigo_aleatorio.rect.x, inimigo_aleatorio.rect.y), self.delta_t)
+                tiro_inimigo = TiroInimigo((inimigo_aleatorio.rect.x, inimigo_aleatorio.rect.y), self.delta_t, self.lista_sprites_tiro_inimigo)
                 self.sprites_tiro_inimigo.add(tiro_inimigo)
                 self.som_tiro_inimigo.play()
             else:
                 for inimigo in self.sprites_inimigo:
-                    tiro_inimigo = TiroInimigo((inimigo.rect.x, inimigo.rect.y), self.delta_t)
+                    tiro_inimigo = TiroInimigo((inimigo.rect.x, inimigo.rect.y), self.delta_t, self.lista_sprites_tiro_inimigo)
                     self.sprites_tiro_inimigo.add(tiro_inimigo)
                     self.som_tiro_inimigo.play()
         if pygame.sprite.spritecollide(self.nave, self.sprites_tiro_inimigo, True):
