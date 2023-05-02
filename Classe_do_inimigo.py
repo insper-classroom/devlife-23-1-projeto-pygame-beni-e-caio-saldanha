@@ -32,14 +32,12 @@ class Inimigo(pygame.sprite.Sprite):
         super().__init__()
         self.image = imagem_redimensionada
         self.rect = self.image.get_rect()
-        print(self.rect)
         self.rect.x = posicao_inimigo[0]
         self.rect.y = posicao_inimigo[1]
         self.delta_t = delta_t
         self.max_x = posicao_inimigo[0] + 260
         self.min_x = posicao_inimigo[0] - 260
         self.velocidade = 30
-
 
     def update(self):
         if self.rect.x < self.min_x: 

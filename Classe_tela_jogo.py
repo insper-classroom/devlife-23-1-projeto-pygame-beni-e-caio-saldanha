@@ -43,7 +43,6 @@ class TelaJogo:
         """
         pygame.init()
 
-        # TELA E WINDOW
         self.largura = 1520
         self.altura = 760
         self.window = pygame.display.set_mode((self.largura, self.altura))
@@ -67,20 +66,12 @@ class TelaJogo:
         imagem_inimigo_redimensionada = pygame.transform.scale(imagem_inimigo, (50,50))
         largura_inimigo = imagem_inimigo_redimensionada.get_width()
 
-        # x_barreira = 200
-        # y_barreira = 650
-        # self.grupo_barreiras = pygame.sprite.Group()
-        # for __ in range (3):
-        #     barreira = Barreiras(x_barreira, y_barreira)
-        #     self.grupo_barreiras.add(barreira)
-        #     x_barreira += 500
         self.lista_sprites_tiro_personagem = []
         for i in range (3):
             imagem_tiro_personagem = TIRO_REDIMENSIONADO.subsurface((i * 10, 0), (10, 40))
             self.lista_sprites_tiro_personagem.append(imagem_tiro_personagem)
         index_tiro_personagem = 0
         self.img_tiro_personagem = self.lista_sprites_tiro_personagem[index_tiro_personagem]
-        # self.img_tiro_personagem = self.img_tiro_personagem.get_alpha()
 
         self.ultimo_updated = -1
         self.delta_t = self.calcula_deltaT()
@@ -113,8 +104,6 @@ class TelaJogo:
                 self.sprites_inimigo.add(self.inimigo)
                 x += largura_inimigo
             y += altura_inimigo
-            # if y == 640:
-            #     re
             x = 260
 
         self.postiro = [380,670]
@@ -210,7 +199,6 @@ class TelaJogo:
             else:
                 return 4
         if self.inimigo.rect.y > 640:
-            print('cheguei')
             return 5
         if self.contador_vidas_1 == 0:
             return 4
