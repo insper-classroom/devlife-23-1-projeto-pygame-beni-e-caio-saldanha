@@ -1,7 +1,7 @@
 import pygame
 
 class TiroPersonagem(pygame.sprite.Sprite):
-    def __init__(self, posicao_tiro, delta_t, imagem_tiro = pygame.image.load('Imagens/tiro_personagem.png')):
+    def __init__(self, posicao_tiro, delta_t, quem_atirou, imagem_tiro = pygame.image.load('Imagens/tiro_personagem.png')):
         pygame.sprite.Sprite.__init__(self)
         self.posicao = posicao_tiro
         self.delta_t = delta_t
@@ -10,6 +10,7 @@ class TiroPersonagem(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.x = self.posicao[0]
         self.rect.y = self.posicao[1]
+        self.quem_atirou = quem_atirou
 
 
     def update (self):

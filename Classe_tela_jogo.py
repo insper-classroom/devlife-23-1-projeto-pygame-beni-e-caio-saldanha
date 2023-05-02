@@ -44,6 +44,8 @@ class TelaJogo:
         self.grupo_personagem.add(self.nave)
         self.grupo_personagem.add(self.nave2)
         self.largura_personagem = imagem_nave_redimensionada1.get_width()
+        self.score_p1 = 0
+        self.score_p2 = 0
 
         self.som_tiro = pygame.mixer.Sound('sons\Som-do-tiro-dos-Players.wav')
 
@@ -89,12 +91,12 @@ class TelaJogo:
                     self.nave.movimenta_nave(evento)
                     self.nave2.movimenta_nave(evento)
                 if evento.type == pygame.KEYDOWN and evento.key == pygame.K_w:
-                    tiro = TiroPersonagem([self.nave.rect.x + (self.largura_personagem/2), self.nave1_pos[1]], self.delta_t)
+                    tiro = TiroPersonagem([self.nave.rect.x + (self.largura_personagem/2), self.nave1_pos[1]], self.delta_t,'p1')
                     self.sprites_tiro.add(tiro)
                     self.som_tiro.play()
 
                 if evento.type == pygame.KEYDOWN and evento.key == pygame.K_i:
-                    tiro = TiroPersonagem([self.nave2.rect.x + (self.largura_personagem/2), self.nave2_pos[1]], self.delta_t)
+                    tiro = TiroPersonagem([self.nave2.rect.x + (self.largura_personagem/2), self.nave2_pos[1]], self.delta_t, 'p2')
                     self.sprites_tiro.add(tiro)
                     self.som_tiro.play() 
             
@@ -110,6 +112,10 @@ class TelaJogo:
                 if pygame.sprite.collide_rect(inimigo, tiro_i):
                     self.sprites_inimigo.remove(inimigo)
                     self.sprites_tiro.remove(tiro_i)
+                    if tiro_i.quem_atirou == 'p1':
+                        self.score_p1 += 30
+                    elif tiro_i.quem_atirou == 'p2':
+                        self.score_p2 += 30
                 elif tiro_i.rect.y < 0:
                     self.sprites_tiro.remove(tiro_i)
 
@@ -124,7 +130,6 @@ class TelaJogo:
                     self.sprites_tiro_inimigo.add(tiro_inimigo)
         if pygame.sprite.spritecollide(self.nave, self.sprites_tiro_inimigo, True):
             print('colidiu')
-        print(self.nave.rect.x)
         self.sprites_tiro_inimigo.update()
     
         for event in pygame.event.get():
@@ -146,11 +151,9 @@ class TelaJogo:
         self.grupo_personagem.draw(self.window)
         # self.grupo_barreiras.draw(self.window)
         fonte = pygame.font.Font('Imagens\Sigmar-Regular.ttf', 24)
-        score_p1 = 0
-        score_p2 = 0
-        pontuacao_p1 = fonte.render(f'score:  {score_p1}', True, (115,215,255))
+        pontuacao_p1 = fonte.render(f'score:  {self.score_p1}', True, (115,215,255))
         vidas_p1 = fonte.render('vidas:', True, (115,215,255))
-        pontuacao_p2 = fonte.render(f'score:  {score_p2}', True, (255,0,0))
+        pontuacao_p2 = fonte.render(f'score:  {self.score_p2}', True, (255,0,0))
         vidas_p2 = fonte.render('vidas:', True, (255,0,0))
         self.window.blit(pontuacao_p1, (10, 30))
         self.window.blit(vidas_p1, (10, 5))
