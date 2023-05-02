@@ -8,3 +8,4 @@ O Galactic Warfare é um jogo de tiro em que o jogador assume o controle de uma 
 Créditos:
 - Trilha sonoroa foi pega do filme Star Wars 
 - Os outros sons do game foram pegos do site: FreeSound
+- A documentação em docsstrings auxiliada pelo chat gpt

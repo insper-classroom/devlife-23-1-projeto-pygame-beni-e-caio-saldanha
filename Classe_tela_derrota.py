@@ -1,13 +1,42 @@
 import pygame
 
 class TelaDerrota:
+    """
+    Classe que representa a tela de derrota do jogo.
+    
+    Atributos:
+    window (Surface): Janela onde a tela de derrota é desenhada.
+    width_window (int): Largura da janela onde a tela de derrota é desenhada.
+    imagem_fundo_redimensionada (pygame.Surface): Imagem do fundo da tela de derrota redimensionada.
+    widht_texto_titulo (int): Largura do texto do título da tela de derrota.
+    widht_texto_win (int): Largura do texto de mensagem da tela de derrota.
+    widht_texto_game_over (int): Largura do texto "GAME OVER" da tela de derrota.
+    
+    Métodos:
+    desenha_tela(self): Desenha a tela de derrota na janela.
+    atualiza_estado(self): Atualiza o estado da tela de derrota de acordo com os eventos.
+    
+    """
+
     def __init__(self, window):
+        """
+        Construtor da classe TelaDerrota.
+        
+        Argumentos:
+        window (Surface): Janela onde a tela de derrota é desenhada.
+        
+        """
+
         self.window = window
         self.width_window= window.get_width()
         imagem_fundo = pygame.image.load('Imagens\SpaceBackground.png')
         self.imagem_fundo_redimensionada = pygame.transform.scale(imagem_fundo, (1520, 760))
 
     def desenha_tela(self):
+        """
+        Desenha a tela de derrota na janela.
+        """
+
         pygame.init()
         cor = (255,255,255)
         self.window.fill((255, 255, 255))
@@ -28,6 +57,10 @@ class TelaDerrota:
         self.window.blit(fonte_game_over, ((self.width_window//2)-(self.widht_texto_game_over//2),330))
 
     def atualiza_estado(self):
+        """
+        Atualiza o estado da tela de derrota de acordo com os eventos.
+        """
+        
         for evento in pygame.event.get():
             if evento.type == pygame.QUIT:
                 return -1

@@ -2,8 +2,26 @@ import pygame
 
 
 class Nave(pygame.sprite.Sprite):
+    """
+    Classe que representa a nave do jogador.
+
+    Atributos:
+    pos (tuple): Posição inicial da nave na tela (x,y).
+    imagem_redimensionada (pygame.Surface): Imagem da nave com as dimensões já redimensionadas.
+    delta_t (float): Diferença de tempo entre cada iteração do loop de jogo.
+    n_nave (int): Identificador da nave (1 ou 2).
+
+    Métodos:
+    movimenta_nave(evento): Move a nave de acordo com as teclas pressionadas pelo jogador.
+    
+    """
     
     def __init__(self,pos,imagem_redimensionada,delta_t,n_nave):
+        """
+        Construtor da classe Nave.
+        
+        """
+
         pygame.sprite.Sprite.__init__(self)
         self.vel_nave1 = 0
         self.vel_nave2 = 0
@@ -15,6 +33,13 @@ class Nave(pygame.sprite.Sprite):
         self.rect.y = pos[1]
 
     def movimenta_nave(self, evento):
+        """
+        Move a nave de acordo com as teclas pressionadas pelo jogador.
+        
+        Parametros:
+        evento : pygame.event.Event
+            Evento escolhido pelo teclado do jogador.
+        """
 
         v = 30
         
@@ -59,6 +84,4 @@ class Nave(pygame.sprite.Sprite):
 
 
             self.rect.x += self.vel_nave2 * self.delta_t
-
-# class NaveVermelha(Nave):
     

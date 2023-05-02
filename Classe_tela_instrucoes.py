@@ -2,13 +2,39 @@ import pygame
 
 
 class TelaInstrucao:
+    """
+    Classe responsável por gerenciar a tela de instruções do jogo.
+
+    Atributos:
+        window (pygame.Surface): superfície que representa a janela do jogo.
+        width_window (int): largura da janela.
+        imagem_fundo_redimensionada (pygame.Surface): imagem de fundo redimensionada para preencher a janela.
+
+    Métodos:
+        desenha_tela(self): Desenha a tela de instruções na superfície window.
+
+        atualiza_estado(self): Atualiza o estado da tela com base nos eventos do pygame.
+
+    """
+
     def __init__(self, window):
+        """
+        Construtor da classe TelaInstrucao.
+
+        Argumentos:
+            window (pygame.Surface): superfície que representa a janela do jogo.
+        """
+
         self.window = window
         self.width_window= window.get_width()
         imagem_fundo = pygame.image.load('Imagens\SpaceBackground.png')
         self.imagem_fundo_redimensionada = pygame.transform.scale(imagem_fundo, (1520, 760))
 
     def desenha_tela(self):
+        """
+        Desenha a tela de instruções na superfície window.
+        """
+
         pygame.init()
         cor = (255,255,255)
         self.window.fill((255, 255, 255))
@@ -57,7 +83,10 @@ class TelaInstrucao:
  
 
     def atualiza_estado(self):
-        
+        """
+        Atualiza a tela de acordo com os comandos do usuário
+        """
+
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return -1

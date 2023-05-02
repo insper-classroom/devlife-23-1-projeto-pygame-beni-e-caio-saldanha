@@ -7,7 +7,40 @@ from Classe_tiro_personagem import TiroPersonagem
 from Classe_tiro_inimigo import TiroInimigo
 
 class TelaJogo:
+    """
+    A classe TelaJogo define a tela e os objetos do jogo.
+    
+    Atributos:
+    - window (Surface): superfície onde o jogo é renderizado.
+    - largura (int): largura da janela.
+    - altura (int): altura da janela.
+    - imagem_fundo (Surface): imagem do fundo do jogo.
+    - nave (Nave): nave do jogador 1.
+    - nave2 (Nave): nave do jogador 2.
+    - grupo_personagem (Group): grupo que contém as naves dos jogadores.
+    - largura_personagem (int): largura da imagem das naves dos jogadores.
+    - sprites_inimigo (Group): grupo que contém os inimigos do jogo.
+    - sprites_tiro (Group): grupo que contém os tiros das naves dos jogadores.
+    - sprites_tiro_inimigo (Group): grupo que contém os tiros dos inimigos.
+    - som_tiro (Sound): som do tiro das naves dos jogadores.
+    - ultimo_updated (int): momento da última atualização.
+    - delta_t (float): tempo desde a última atualização.
+    - nave1_pos (list): lista com a posição inicial da nave do jogador 1.
+    - nave2_pos (list): lista com a posição inicial da nave do jogador 2.
+    
+    Métodos:
+    - __init__(self, window): inicializa a janela e os objetos do jogo.
+    - calcula_deltaT(self): calcula o tempo desde a última atualização.
+    - atualiza_estado(self): atualiza o estado do jogo.
+    """
+
     def __init__(self, window):
+        """
+        Inicializa a janela e os objetos do jogo.
+
+        Argumentos:
+        - window (Surface): superfície onde o jogo é renderizado.
+        """
         pygame.init()
 
         # TELA E WINDOW
@@ -71,6 +104,10 @@ class TelaJogo:
            
 
     def calcula_deltaT(self):
+        """
+        calcula o tempo desde a ultima atualização
+        """
+
         tempo_atual = pygame.time.get_ticks()
         delta_t = (tempo_atual - self.ultimo_updated) / 1000
         self.ultimo_updated = tempo_atual
@@ -78,6 +115,9 @@ class TelaJogo:
         return delta_t
 
     def atualiza_estado(self):
+        """
+        Atualiza a tela de gameplay
+        """
         
         clock = pygame.time.Clock()
         clock.tick(120)
@@ -137,6 +177,9 @@ class TelaJogo:
         return 1
     
     def desenha_tela(self):
+        """
+        Desenha na tela do jogo
+        """
         
         self.window.fill((255, 255, 255))
         self.window.blit(self.imagem_fundo, (0,0))
