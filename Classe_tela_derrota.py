@@ -64,4 +64,6 @@ class TelaDerrota:
         for evento in pygame.event.get():
             if evento.type == pygame.QUIT:
                 return -1
-        return 4
+            elif evento.type == pygame.KEYDOWN and evento.key == pygame.K_v:
+                return 0
+        return 5

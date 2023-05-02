@@ -210,6 +210,7 @@ class TelaJogo:
             else:
                 return 4
         if self.inimigo.rect.y > 640:
+            print('cheguei')
             return 5
         if self.contador_vidas_1 == 0:
             return 4
