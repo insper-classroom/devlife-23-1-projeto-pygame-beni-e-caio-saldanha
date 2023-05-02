@@ -51,6 +51,7 @@ class TelaJogo:
 
         imagem_nave_p1 = pygame.image.load('Imagens\Imagem_p1.png')
         imagem_nave_redimensionada1 = pygame.transform.scale(imagem_nave_p1, (95,95))
+        self.img_vidas = pygame.transform.scale(imagem_nave_p1, (40,40))
         imagem_nave_p2 = pygame.image.load('Imagens\Imagem_p2.png')
         imagem_nave_redimensionada2 = pygame.transform.scale(imagem_nave_p2, (95,95))
         self.imagem_fundo = pygame.image.load('Imagens\SpaceBackground.png')
@@ -122,7 +123,7 @@ class TelaJogo:
         """
         
         clock = pygame.time.Clock()
-        clock.tick(120)
+        clock.tick(60)
         for evento in pygame.event.get():
             if evento.type != pygame.MOUSEMOTION:
                 if evento.type == pygame.QUIT:
@@ -200,6 +201,7 @@ class TelaJogo:
         vidas_p2 = fonte.render('vidas:', True, (255,0,0))
         self.window.blit(pontuacao_p1, (10, 30))
         self.window.blit(vidas_p1, (10, 5))
+        self.window.blit(self.img_vidas, (90,5))
         self.window.blit(pontuacao_p2, (1300, 30))
         self.window.blit(vidas_p2, (1300, 5))
 
