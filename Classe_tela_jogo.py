@@ -45,7 +45,7 @@ class TelaJogo:
         self.grupo_personagem.add(self.nave2)
         self.largura_personagem = imagem_nave_redimensionada1.get_width()
 
-        self.som_tiro = pygame.mixer.Sound('sons\Som do tiro dos Players.mp3')
+        self.som_tiro = pygame.mixer.Sound('sons\Som-do-tiro-dos-Players.wav')
 
         largura_inimigo = imagem_inimigo_redimensionada.get_width()
         altura_inimigo = imagem_inimigo_redimensionada.get_height()

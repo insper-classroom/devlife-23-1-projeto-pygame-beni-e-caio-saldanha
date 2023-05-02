@@ -23,7 +23,6 @@ class TelaInstrucao:
         fonte_como_jogar = pygame.font.Font('Imagens\Sigmar-Regular.ttf', 50)
         fonte_voltar = pygame.font.Font('Imagens\Sigmar-Regular.ttf', 20)
 
-
         fonte_i0 = fonte_como_jogar.render('COMO JOGAR:', fonte_texto, cor)
         self.widht_texto_i0 = fonte_i0.get_width()
         self.window.blit(fonte_i0, ((self.width_window//2)-(self.widht_texto_i0//2),230))
@@ -58,7 +57,7 @@ class TelaInstrucao:
  
 
     def atualiza_estado(self):
-        2
+        
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return -1
