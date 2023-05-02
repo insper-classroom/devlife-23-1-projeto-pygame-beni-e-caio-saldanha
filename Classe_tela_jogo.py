@@ -89,6 +89,7 @@ class TelaJogo:
         self.som_tiro = pygame.mixer.Sound('sons\Som-do-tiro-dos-Players.wav')
         self.som_tiro_inimigo = pygame.mixer.Sound('sons\Som-tiro-do-inimigo.wav')
         self.explosao_inimiga = pygame.mixer.Sound('sons\explosão_inimiga.wav')
+        self.explosao_player = pygame.mixer.Sound('sons\explosão_player.wav')
 
         largura_inimigo = imagem_inimigo_redimensionada.get_width()
         altura_inimigo = imagem_inimigo_redimensionada.get_height()
@@ -181,9 +182,11 @@ class TelaJogo:
         if pygame.sprite.spritecollide(self.nave, self.sprites_tiro_inimigo, True):
             self.lista_de_vidas_1.pop()
             self.contador_vidas_1 -= 1
+            self.explosao_player.play()
         if pygame.sprite.spritecollide(self.nave2, self.sprites_tiro_inimigo, True):
             self.lista_de_vidas_2.pop()
             self.contador_vidas_2 -= 1
+            self.explosao_player.play()
 
         self.sprites_tiro_inimigo.update()
     

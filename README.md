@@ -9,3 +9,4 @@ Créditos:
 - Trilha sonoroa foi pega do filme Star Wars 
 - Os outros sons do game foram pegos do site: FreeSound
 - A documentação em docsstrings auxiliada pelo chat gpt
+- Som da explosão das naves inimigas foi pego da atividade dos checks feita anteriormente
