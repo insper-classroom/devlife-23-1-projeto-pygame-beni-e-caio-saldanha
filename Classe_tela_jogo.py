@@ -2,7 +2,6 @@ import pygame
 import random
 from Classe_da_nave import Nave
 from Classe_do_inimigo import Inimigo
-from Classe_cria_barreiras import Barreiras
 from Classe_tiro_personagem import TiroPersonagem
 from Classe_tiro_inimigo import TiroInimigo
 
