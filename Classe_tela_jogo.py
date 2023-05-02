@@ -177,9 +177,13 @@ class TelaJogo:
             if event.type == pygame.QUIT:
                 return -1
         if len(self.sprites_inimigo) == 0:
-            return 3
-        if self.inimigo.rect.y > 640:
+            if self.score_p1 > self.score_p2:
+                return 3
+            else:
+                self.quem_ganhou = 'Player 2'
             return 4
+        if self.inimigo.rect.y > 640:
+            return 5
         return 1
     
     def desenha_tela(self):

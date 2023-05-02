@@ -2,7 +2,8 @@ import pygame
 from Classe_tela_jogo import *
 from Classe_tela_inicio import *
 from Classe_tela_instrucoes import *
-from Classe_tela_vitoria import *
+from Classe_tela_vitoria_P1 import *
+from Classe_tela_vitoria_P2 import *
 from Classe_tela_derrota import *
 
 class ControlaTelas:
@@ -45,10 +46,11 @@ class ControlaTelas:
         self.TelaJogo = TelaJogo(self.window)
         self.TelaInicio = TelaInicio(self.window)
         self.TelaInstrucoes = TelaInstrucao(self.window)
-        self.TelaVitoria = TelaVitoria(self.window)
+        self.TelaVitoriaP1 = TelaVitoriaP1(self.window)
+        self.TelaVitoriaP2 = TelaVitoriaP2(self.window)
         self.TelaDerrota = TelaDerrota(self.window)
 
-        self.lista_telas = [self.TelaInicio, self.TelaJogo, self.TelaInstrucoes, self.TelaVitoria, self.TelaDerrota]
+        self.lista_telas = [self.TelaInicio, self.TelaJogo, self.TelaInstrucoes, self.TelaVitoriaP1, self.TelaVitoriaP2, self.TelaDerrota]
         indice_tela = 0
         self.tela = self.lista_telas[indice_tela]
     

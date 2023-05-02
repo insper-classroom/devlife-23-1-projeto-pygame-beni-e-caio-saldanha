@@ -1,6 +1,6 @@
 import pygame
 
-class TelaVitoria:
+class TelaVitoriaP1:
     """
     Classe responsável por exibir a tela de vitória do jogo.
     """
@@ -39,7 +39,7 @@ class TelaVitoria:
         self.window.blit(fonte_titulo_desenha, ((self.width_window//2)-(self.widht_texto_titulo//2),180))   
 
         fonte_win = pygame.font.Font('Imagens\Sigmar-Regular.ttf', 50)
-        fonte_win_desenha = fonte_win.render('Parabéns, vocês salvaram a terra!', fonte_win, cor)
+        fonte_win_desenha = fonte_win.render('Parabéns, o Player 1 venceu!', fonte_win, cor)
         self.widht_texto_win = fonte_win_desenha.get_width()
         self.window.blit(fonte_win_desenha, ((self.width_window//2)-(self.widht_texto_win//2),480))
 
