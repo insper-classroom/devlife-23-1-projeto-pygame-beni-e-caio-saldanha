@@ -187,6 +187,9 @@ class TelaJogo:
                     tiro_inimigo = TiroInimigo((inimigo.rect.x, inimigo.rect.y), self.delta_t, self.lista_sprites_tiro_inimigo)
                     self.sprites_tiro_inimigo.add(tiro_inimigo)
                     self.som_tiro_inimigo.play()
+        for tiro_i2 in self.sprites_tiro_inimigo:
+            if tiro_i2.rect.y > 760:
+                self.sprites_tiro_inimigo.remove(tiro_i2)
         if pygame.sprite.spritecollide(self.nave, self.sprites_tiro_inimigo, True):
             self.lista_de_vidas_1.pop()
             self.contador_vidas_1 -= 1
