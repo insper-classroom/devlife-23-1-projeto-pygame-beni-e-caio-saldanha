@@ -1,13 +1,28 @@
 import pygame
 
 class TelaInicio:
+    """
+    Classe responsável pela tela de início do jogo.
+    """
+
     def __init__(self, window):
+        """
+        Inicializa a tela de início.
+
+        Argumentos:
+            window: janela do jogo.
+        """
+
         self.window = window
         self.width_window= window.get_width()
         imagem_fundo = pygame.image.load('Imagens\SpaceBackground.png')
         self.imagem_fundo_redimensionada = pygame.transform.scale(imagem_fundo, (1520, 760))
 
     def desenha_tela(self):
+        """
+        Desenha a tela de início na janela do jogo.
+        """
+
         pygame.init()
         cor = (255,255,255)
         self.window.fill((255, 255, 255))
@@ -34,6 +49,9 @@ class TelaInicio:
         
 
     def atualiza_estado(self):
+        """
+        Atualiza a tela de acordo com o comandos do usuário
+        """
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return -1

@@ -1,13 +1,32 @@
 import pygame
 
 class TelaVitoria:
+    """
+    Classe responsável por exibir a tela de vitória do jogo.
+    """
+
     def __init__(self, window):
+        """
+        Inicializa a classe TelaVitoria.
+
+        Argumentos:
+            window (pygame.Surface): janela do pygame.
+
+        Atributos:
+            window (pygame.Surface): janela do pygame.
+            width_window (int): largura da janela do pygame.
+            imagem_fundo_redimensionada (pygame.Surface): imagem de fundo da tela de vitória redimensionada.
+        """
+
         self.window = window
         self.width_window= window.get_width()
         imagem_fundo = pygame.image.load('Imagens\SpaceBackground.png')
         self.imagem_fundo_redimensionada = pygame.transform.scale(imagem_fundo, (1520, 760))
 
     def desenha_tela(self):
+        """
+        Desenha a tela de vitória.
+        """
 
         pygame.init()
         cor = (255,255,255)
@@ -29,6 +48,9 @@ class TelaVitoria:
         self.window.blit(fonte_winners, ((self.width_window//2)-(self.widht_texto_winner_desenha//2),330))
 
     def atualiza_estado(self):
+        """
+        Atualiza o estado da tela de acordo com os comandos do usuário.
+        """
         for evento in pygame.event.get():
             if evento.type == pygame.QUIT:
                 return -1
