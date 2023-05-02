@@ -26,10 +26,12 @@ class TiroPersonagem(pygame.sprite.Sprite):
         """
 
         pygame.sprite.Sprite.__init__(self)
+        self.imagem_tiro = imagem_tiro
+        self.index = 0
         self.posicao = posicao_tiro
         self.delta_t = delta_t
-        self.velocidade = 100
-        self.image = imagem_tiro
+        self.velocidade = 120
+        self.image = self.imagem_tiro[self.index]
         self.rect = self.image.get_rect()
         self.rect.x = self.posicao[0]
         self.rect.y = self.posicao[1]
@@ -40,4 +42,8 @@ class TiroPersonagem(pygame.sprite.Sprite):
         """
         Atualiza a posição do tiro na tela de acordo com sua velocidade e o tempo decorrido desde o último frame.
         """
+        self.index += 0.03
+        if self.index > 3:
+            self.index = 0
+        self.image = self.imagem_tiro[int(self.index)]
         self.rect.y -= self.velocidade * self.delta_t

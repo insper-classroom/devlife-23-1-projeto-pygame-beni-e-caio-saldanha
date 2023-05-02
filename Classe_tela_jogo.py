@@ -50,6 +50,7 @@ class TelaJogo:
         pygame.display.set_caption('Galactic Warfare')
 
         TIRO = pygame.image.load('Imagens/tiro_personagem.png')
+        TIRO_REDIMENSIONADO = pygame.transform.scale_by(TIRO, 2)
 
         imagem_nave_p1 = pygame.image.load('Imagens\Imagem_p1.png')
         imagem_nave_redimensionada1 = pygame.transform.scale(imagem_nave_p1, (95,95))
@@ -73,13 +74,13 @@ class TelaJogo:
         #     barreira = Barreiras(x_barreira, y_barreira)
         #     self.grupo_barreiras.add(barreira)
         #     x_barreira += 500
-        lista_sprites_tiro_personagem = []
+        self.lista_sprites_tiro_personagem = []
         for i in range (3):
-            imagem_tiro_personagem = TIRO.subsurface((i * 5, 0), (5, 20))
-            lista_sprites_tiro_personagem.append(imagem_tiro_personagem)
+            imagem_tiro_personagem = TIRO_REDIMENSIONADO.subsurface((i * 10, 0), (10, 40))
+            self.lista_sprites_tiro_personagem.append(imagem_tiro_personagem)
         index_tiro_personagem = 0
-        self.img_tiro_personagem = lista_sprites_tiro_personagem[index_tiro_personagem]
-        self.img_tiro_personagem = self.img_tiro_personagem.get_alpha()
+        self.img_tiro_personagem = self.lista_sprites_tiro_personagem[index_tiro_personagem]
+        # self.img_tiro_personagem = self.img_tiro_personagem.get_alpha()
 
         self.ultimo_updated = -1
         self.delta_t = self.calcula_deltaT()
@@ -112,6 +113,8 @@ class TelaJogo:
                 self.sprites_inimigo.add(self.inimigo)
                 x += largura_inimigo
             y += altura_inimigo
+            # if y == 640:
+            #     re
             x = 260
 
         self.postiro = [380,670]
@@ -147,12 +150,12 @@ class TelaJogo:
                     self.nave.movimenta_nave(evento)
                     self.nave2.movimenta_nave(evento)
                 if evento.type == pygame.KEYDOWN and evento.key == pygame.K_w:
-                    tiro = TiroPersonagem([self.nave.rect.x + (self.largura_personagem/2), self.nave1_pos[1]], self.delta_t,'p1', self.img_tiro_personagem)
+                    tiro = TiroPersonagem([self.nave.rect.x + (self.largura_personagem/2), self.nave1_pos[1]], self.delta_t,'p1', self.lista_sprites_tiro_personagem)
                     self.sprites_tiro.add(tiro)
                     self.som_tiro.play()
 
                 if evento.type == pygame.KEYDOWN and evento.key == pygame.K_i:
-                    tiro = TiroPersonagem([self.nave2.rect.x + (self.largura_personagem/2), self.nave2_pos[1]], self.delta_t, 'p2')
+                    tiro = TiroPersonagem([self.nave2.rect.x + (self.largura_personagem/2), self.nave2_pos[1]], self.delta_t, 'p2', self.lista_sprites_tiro_personagem)
                     self.sprites_tiro.add(tiro)
                     self.som_tiro.play() 
             
