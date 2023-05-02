@@ -8,5 +8,9 @@ O Galactic Warfare é um jogo de tiro em que o jogador assume o controle de uma 
 Créditos:
 - Trilha sonoroa foi pega do filme Star Wars 
 - Os outros sons do game foram pegos do site: FreeSound
-- A documentação em docsstrings auxiliada pelo chat gpt
+- A documentação em docsstrings foi auxiliada pelo chat gpt
 - Som da explosão das naves inimigas foi pego da atividade dos checks feita anteriormente
+- Os sprites das naves e dos tiros foram pegos no site Craftpix.net
+
+
+Duvidas para instalação acesse o site: https://insper-classroom.github.io/devlife-23-1-projeto-pygame-beni-e-caio-saldanha/

@@ -49,6 +49,8 @@ class TelaJogo:
         self.window = pygame.display.set_mode((self.largura, self.altura))
         pygame.display.set_caption('Galactic Warfare')
 
+        TIRO = pygame.image.load('Imagens/tiro_personagem.png')
+
         imagem_nave_p1 = pygame.image.load('Imagens\Imagem_p1.png')
         imagem_nave_redimensionada1 = pygame.transform.scale(imagem_nave_p1, (95,95))
         self.img_vidas = pygame.transform.scale(imagem_nave_p1, (40,40))
@@ -71,7 +73,13 @@ class TelaJogo:
         #     barreira = Barreiras(x_barreira, y_barreira)
         #     self.grupo_barreiras.add(barreira)
         #     x_barreira += 500
-
+        lista_sprites_tiro_personagem = []
+        for i in range (3):
+            imagem_tiro_personagem = TIRO.subsurface((i * 5, 0), (5, 20))
+            lista_sprites_tiro_personagem.append(imagem_tiro_personagem)
+        index_tiro_personagem = 0
+        self.img_tiro_personagem = lista_sprites_tiro_personagem[index_tiro_personagem]
+        self.img_tiro_personagem = self.img_tiro_personagem.get_alpha()
 
         self.ultimo_updated = -1
         self.delta_t = self.calcula_deltaT()
@@ -139,7 +147,7 @@ class TelaJogo:
                     self.nave.movimenta_nave(evento)
                     self.nave2.movimenta_nave(evento)
                 if evento.type == pygame.KEYDOWN and evento.key == pygame.K_w:
-                    tiro = TiroPersonagem([self.nave.rect.x + (self.largura_personagem/2), self.nave1_pos[1]], self.delta_t,'p1')
+                    tiro = TiroPersonagem([self.nave.rect.x + (self.largura_personagem/2), self.nave1_pos[1]], self.delta_t,'p1', self.img_tiro_personagem)
                     self.sprites_tiro.add(tiro)
                     self.som_tiro.play()
 
@@ -217,7 +225,6 @@ class TelaJogo:
         self.sprites_tiro.draw(self.window)
         self.sprites_tiro_inimigo.draw(self.window)
         self.grupo_personagem.draw(self.window)
-        # self.grupo_barreiras.draw(self.window)
         fonte = pygame.font.Font('Imagens\Sigmar-Regular.ttf', 24)
         pontuacao_p1 = fonte.render(f'score:  {self.score_p1}', True, (115,215,255))
         vidas_p1 = fonte.render('vidas:', True, (115,215,255))
