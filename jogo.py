@@ -4,4 +4,4 @@ Roda o jogo
 """
 
 jogo = ControlaTelas()
-jogo.game_loop()
+jogo.game_loop() 

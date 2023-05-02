@@ -52,9 +52,13 @@ class TelaJogo:
         imagem_nave_p1 = pygame.image.load('Imagens\Imagem_p1.png')
         imagem_nave_redimensionada1 = pygame.transform.scale(imagem_nave_p1, (95,95))
         self.img_vidas = pygame.transform.scale(imagem_nave_p1, (40,40))
+        self.lista_de_vidas_1 = [(90,5),(120,5),(150,5)]
+        self.contador_vidas_1 = 3
         imagem_nave_p2 = pygame.image.load('Imagens\Imagem_p2.png')
         imagem_nave_redimensionada2 = pygame.transform.scale(imagem_nave_p2, (95,95))
         self.img_vidas_2 = pygame.transform.scale(imagem_nave_p2, (40,40))
+        self.lista_de_vidas_2 = [(1380,5),(1410,5),(1440,5)]
+        self.contador_vidas_2 = 3
         self.imagem_fundo = pygame.image.load('Imagens\SpaceBackground.png')
         imagem_inimigo = pygame.image.load('Imagens\Imagem_inimigo1.png')
         imagem_inimigo_redimensionada = pygame.transform.scale(imagem_inimigo, (50,50))
@@ -105,7 +109,6 @@ class TelaJogo:
 
         pygame.mixer.music.load('sons\Trilha Sonora do Game.mp3')
         # pygame.mixer.music.play(loops=-1)
-           
 
     def calcula_deltaT(self):
         """
@@ -171,7 +174,12 @@ class TelaJogo:
                     tiro_inimigo = TiroInimigo((inimigo.rect.x, inimigo.rect.y), self.delta_t)
                     self.sprites_tiro_inimigo.add(tiro_inimigo)
         if pygame.sprite.spritecollide(self.nave, self.sprites_tiro_inimigo, True):
-            print('colidiu')
+            self.lista_de_vidas_1.pop()
+            self.contador_vidas_1 -= 1
+        if pygame.sprite.spritecollide(self.nave2, self.sprites_tiro_inimigo, True):
+            self.lista_de_vidas_2.pop()
+            self.contador_vidas_2 -= 1
+
         self.sprites_tiro_inimigo.update()
     
         for event in pygame.event.get():
@@ -202,10 +210,12 @@ class TelaJogo:
         vidas_p2 = fonte.render('vidas:', True, (255,0,0))
         self.window.blit(pontuacao_p1, (10, 30))
         self.window.blit(vidas_p1, (10, 5))
-        self.window.blit(self.img_vidas, (90,5))
+        for self.posicao in self.lista_de_vidas_1:
+            self.window.blit(self.img_vidas, self.posicao)
         self.window.blit(pontuacao_p2, (1300, 30))
         self.window.blit(vidas_p2, (1300, 5))
-        self.window.blit(self.img_vidas_2,(1380,5))
+        for posicao in self.lista_de_vidas_2:
+            self.window.blit(self.img_vidas_2,posicao)   
 
 
         pygame.display.update()   
